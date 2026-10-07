@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measure Theory</title>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script defer src="../js/curriculum.js"></script>
+<script defer src="../js/grades.js"></script>
+<script defer src="../js/site.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  }
+});
+</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav"><a class="brand" href="../index.html">Disgusting at Math</a><a href="../index.html">Map</a><a href="../method.html">Method</a><a href="../resources.html">Resources</a><a href="../progress.html">Progress</a></nav>
+
+<p class="kicker">Math · 12</p>
+<h1>Measure Theory</h1>
+<div class="pager"><a href="../topics/complex-analysis.html">← Complex Analysis</a><a href="../topics/pde.html">Partial Differential Equations →</a></div>
+
+<nav class="toc" aria-label="On this page">
+<p class="kicker">On this page</p>
+<ol>
+<li><a href="#attack">Problems first</a></li>
+<li><a href="#prereqs">Prerequisites</a></li>
+<li><a href="#what">What this actually is</a></li>
+<li><a href="#core">Core results</a></li>
+<li><a href="#ladder">The ladder</a></li>
+<li><a href="#hardest">Hardest questions</a></li>
+<li><a href="#gate">Mastery gate</a></li>
+<li><a href="#diagrams">Diagrams</a></li>
+<li><a href="#sets">Escalating sets</a></li>
+<li><a href="#bank">Return bank</a></li>
+<li><a href="#oral">Oral pass</a></li>
+</ol>
+</nav>
+
+<section id="attack">
+<h2>Problems first</h2>
+<p>Attempt these before you open a book or a video. Write the argument in the work box and the conclusion in the answer box. Check counts the problem only when both pass, and it does not open the solution. The solution stays locked for twenty minutes after you start the timer.</p>
+
+<article class="attack">
+<p class="kicker">Attack 1</p>
+<p>Show that any countable subset of \(\mathbb{R}\) has Lebesgue outer measure zero.</p>
+<form class="grade" data-grade="measure-theory-a1">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="measure-theory-a1">Check work and answer</button></p>
+<p class="verdict" data-verdict="measure-theory-a1"></p>
+</form>
+<p><button type="button" data-start="measure-theory-a1">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="measure-theory-a1">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="measure-theory-a1" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-measure-theory-a1" hidden><p>Enumerate the set as \(x_n\). Cover \(x_n\) by an interval of length \(\varepsilon/2^n\). The total length is \(\varepsilon\). Outer measure is the infimum of such covers, so it is 0.</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 2</p>
+<p>Why is the pointwise limit of the functions \(f_n=n\mathbf{1}_{(0,1/n)}\) on \([0,1]\) not something the Riemann integral handles gracefully? Compute the integrals and the limit.</p>
+<form class="grade" data-grade="measure-theory-a2">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="measure-theory-a2">Check work and answer</button></p>
+<p class="verdict" data-verdict="measure-theory-a2"></p>
+</form>
+<p><button type="button" data-start="measure-theory-a2">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="measure-theory-a2">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="measure-theory-a2" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-measure-theory-a2" hidden><p>Each \(f_n\) integrates to 1. The pointwise limit is 0 everywhere (at 0 the functions are 0 if you define them that way, and for \(x>0\) eventually \(1/n<x\)). So the limit of the integrals is 1 and the integral of the limit is 0. There is no dominating integrable function that is independent of \(n\) and finite a.e. in a way that saves dominated convergence; the spikes escape every integrable dominant. This is why you need a hypothesis.</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 3</p>
+<p>State dominated convergence in one sentence, including the dominant.</p>
+<form class="grade" data-grade="measure-theory-a3">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="measure-theory-a3">Check work and answer</button></p>
+<p class="verdict" data-verdict="measure-theory-a3"></p>
+</form>
+<p><button type="button" data-start="measure-theory-a3">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="measure-theory-a3">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="measure-theory-a3" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-measure-theory-a3" hidden><p>If \(|f_n|\le g\) almost everywhere, \(g\) integrable, and \(f_n\to f\) almost everywhere, then \(f\) is integrable and the integrals converge to the integral of \(f\).</p></div>
+</article>
+</section>
+<section id="prereqs">
+<h2>Prerequisites</h2>
+<ul class="clean"><li><a href="real-analysis.html">Real Analysis</a></li></ul>
+</section>
+<section id="what">
+<h2>What this actually is</h2>
+
+<p>Measure theory replaces the Riemann integral, which cannot handle a pointwise limit of functions without an extra uniform-convergence hypothesis you often do not have. A measure assigns sizes to a σ-algebra of sets. Lebesgue measure on \(\mathbb{R}\) extends length. The integral is built from simple functions up, and the convergence theorems — monotone convergence, Fatou, dominated convergence — are the reason the subject exists. \(L^p\) spaces are complete. That completeness is what makes Fourier analysis and probability sit on the same foundation.</p>
+<p>Sheldon Axler’s Measure, Integration & Real Analysis is free from the author and is the main text. Rudin’s Real and Complex Analysis is the paid ceiling; no ISBN was verified for that specific title in this pass, so none is printed. Folland is the other standard paid book, same situation. You do not need either to learn the convergence theorems. You need to prove them.</p>
+<p>A set of measure zero is not a set you can ignore inside a definition. It is a set you can ignore inside a statement that has already been proved to depend only on almost-everywhere behavior.</p>
+
+</section>
+<section id="core">
+<h2>Core results</h2>
+<p>Statements only. Write the argument before you reveal it. A revealed proof you did not attempt is a paragraph you will not be able to rebuild at 2am.</p>
+<ol class="spine">
+
+<li>
+<p><strong>Measures.</strong> A σ-algebra is closed under complements and countable unions. A measure is a countably additive \([0,\infty]\)-valued function on it, with \(\mu(\emptyset)=0\). Lebesgue measure is the completion of the restriction of outer measure to the Carathéodory-measurable sets, and it extends length on intervals.</p>
+<p><button type="button" data-show-proof="proof-measure-theory-1">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-measure-theory-1" hidden><p>Countable additivity for disjoint intervals is a standard estimate. Carathéodory’s criterion produces a σ-algebra on which outer measure is a measure. Completion adds subsets of null sets.</p></div>
+</li>
+<li>
+<p><strong>Integral.</strong> The integral of a nonnegative simple function is the obvious sum. For a nonnegative measurable function it is the supremum of integrals of simple functions underneath. For a general measurable function it is the difference of the positive and negative parts, when at least one is finite.</p>
+<p><button type="button" data-show-proof="proof-measure-theory-2">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-measure-theory-2" hidden><p>Well-definedness of the simple-function integral uses a common refinement of the level sets. Monotone convergence is then used to prove linearity for nonnegative functions. Write that once.</p></div>
+</li>
+<li>
+<p><strong>Convergence theorems.</strong> Monotone convergence: if \(0\le f_n\uparrow f\) then the integrals rise to the integral of \(f\). Fatou: the integral of the liminf is at most the liminf of the integrals. Dominated convergence is the statement in the attack.</p>
+<p><button type="button" data-show-proof="proof-measure-theory-3">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-measure-theory-3" hidden><p>Monotone convergence is the technical heart; Fatou is monotone convergence applied to the infima from each index onward; dominated convergence is Fatou applied to \(g+f_n\) and \(g-f_n\).</p></div>
+</li>
+<li>
+<p><strong>Fubini.</strong> For σ-finite measures, the integral of a nonnegative measurable function on a product equals the iterated integrals in either order. For integrable functions of either sign, the same holds, and almost every slice is integrable.</p>
+<p><button type="button" data-show-proof="proof-measure-theory-4">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-measure-theory-4" hidden><p>Prove it for indicators of measurable rectangles, then for simple functions, then by monotone convergence. The signed case uses integrability to justify the difference.</p></div>
+</li>
+<li>
+<p><strong>L^p.</strong> \(L^p\) is the space of measurable functions with \(\int |f|^p<\infty\), modulo almost-everywhere equality. It is a Banach space for \(1\le p\le\infty\). Hölder’s inequality is the tool that makes the dual of \(L^p\) look like \(L^q\).</p>
+<p><button type="button" data-show-proof="proof-measure-theory-5">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-measure-theory-5" hidden><p>Completeness is: a fast Cauchy sequence has a subsequence with \(\|f_{n_{k+1}}-f_{n_k}\|<2^{-k}\), the telescoping series converges absolutely almost everywhere by monotone convergence, and the limit is the \(L^p\) limit. Hölder is Young’s inequality integrated.</p></div>
+</li>
+</ol>
+</section>
+<section id="ladder">
+<h2>The ladder</h2>
+<p>Four rungs, in order. Do not skip a rung because the next one looks more serious.</p>
+<h3>Tier 0 / First contact</h3><p class="tier-label">Watch or read once. Do not study from this.</p><p class="resource"><a href="https://measure.axler.net/">Axler, the measure-theory book site</a><br><span class="why">Read once, do not study from this. Confirm the PDF is the free book and see the table of contents. Then work in the PDF.</span></p><h3>Tier 1 / Main text</h3><p class="tier-label">The thing you work through.</p><p class="resource"><a href="https://measure.axler.net/MIRA.pdf">Axler, Measure, Integration &amp; Real Analysis</a><br><span class="why">Free legal PDF from the author. This is the main text. It goes from measure through functional analysis at a level you can actually finish.</span></p><h3>Tier 2 / Hard problems</h3><p class="tier-label">The problem book.</p><p class="resource"><a href="https://measure.axler.net/MIRA.pdf">Axler’s exercises on the convergence theorems and L^p</a><br><span class="why">The book is the problem set. Do not skip the “prove that this hypothesis is necessary” exercises.</span></p><h3>Tier 3 / The ceiling</h3><p class="tier-label">The hardest questions that exist at this level.</p><p class="resource"><a href="https://measure.axler.net/MIRA.pdf">A qualifying-exam style reconstruction of dominated convergence</a><br><span class="why">Rudin’s Real and Complex Analysis and Folland are the paid ceilings; ISBNs were not verified, so they are not numbered here. The public ceiling is: write the three convergence theorems and a counterexample for each missing hypothesis, from memory.</span></p>
+
+<ul class="checks">
+<li><label><input type="checkbox" data-slug="measure-theory" data-stage="contact"> Tier 0 done once, then closed.</label></li>
+<li><label><input type="checkbox" data-slug="measure-theory" data-stage="text"> Main text worked, exercises written.</label></li>
+<li><label><input type="checkbox" data-slug="measure-theory" data-stage="hard"> Hard-problem set written up.</label></li>
+<li><label><input type="checkbox" data-slug="measure-theory" data-stage="ceiling"> Ceiling problems attempted under the timer.</label></li>
+<li><label><input type="checkbox" data-slug="measure-theory" data-stage="gate"> Mastery gate passed.</label></li>
+</ul>
+
+</section>
+<section id="hardest">
+<h2>Hardest questions</h2>
+<p>Names and links. The problem text stays on the source site. Copyrighted contest problems are not copied here. What follows is where they are and why they hurt.</p>
+<ol class="spine">
+<li><a href="https://measure.axler.net/MIRA.pdf">Axler, monotone convergence and the exercises after it</a><br><span class="why">Every later theorem is this one with a costume.</span></li><li><a href="https://measure.axler.net/MIRA.pdf">A counterexample to interchanging limit and integral</a><br><span class="why">The spikes \(n\mathbf{1}_{(0,1/n)}\) are the prototype. You need two more, including one where Fatou is strict.</span></li><li><a href="https://measure.axler.net/MIRA.pdf">Prove L^p is complete</a><br><span class="why">The subsequence trick is the one you will reuse for the rest of your life.</span></li><li><a href="https://measure.axler.net/">Fubini for a nonnegative function, written</a><br><span class="why">People apply Fubini to signed functions they have not shown to be integrable. The proof tells you why the hypothesis is there.</span></li><li><a href="https://measure.axler.net/MIRA.pdf">State Hölder and use it to prove the dual pairing of L^p and L^q is well-defined</a><br><span class="why">This is the door to functional analysis. A slogan does not open it.</span></li>
+</ol>
+</section>
+<section id="gate">
+<h2>Mastery gate</h2>
+<p>Pass: from memory, the proofs of monotone convergence’s consequences (Fatou and dominated convergence, assuming monotone convergence) and the construction of a non-integrable pointwise limit of integrable functions. Plus the completeness of \(L^1\). Fail if “almost everywhere” is not in the statements.</p>
+<p><label><input type="checkbox" data-slug="measure-theory" data-stage="gate"> I passed this gate with written solutions.</label></p>
+</section>
+<section id="diagrams">
+<h2>Diagrams</h2>
+<figure class="diagram">
+<svg viewBox="0 0 640 360" role="img" aria-label="Spikes of constant integral and increasing height"><rect width="640" height="360" fill="#000"/><line x1="0" y1="0" x2="0" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="40" y1="0" x2="40" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="80" y1="0" x2="80" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="120" y1="0" x2="120" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="160" y1="0" x2="160" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="200" y1="0" x2="200" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="240" y1="0" x2="240" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="280" y1="0" x2="280" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="320" y1="0" x2="320" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="360" y1="0" x2="360" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="400" y1="0" x2="400" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="440" y1="0" x2="440" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="480" y1="0" x2="480" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="520" y1="0" x2="520" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="560" y1="0" x2="560" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="600" y1="0" x2="600" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="640" y1="0" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="0" x2="640" y2="0" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="40" x2="640" y2="40" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="80" x2="640" y2="80" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="120" x2="640" y2="120" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="160" x2="640" y2="160" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="200" x2="640" y2="200" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="240" x2="640" y2="240" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="280" x2="640" y2="280" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="320" x2="640" y2="320" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="360" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="40" y1="280" x2="600" y2="280" stroke="#fff"/><rect x="80" y="200" width="30" height="80" fill="none" stroke="#fff"/><rect x="140" y="120" width="20" height="160" fill="none" stroke="#fff"/><rect x="200" y="60" width="12" height="220" fill="none" stroke="#fff"/><rect x="260" y="20" width="8" height="260" fill="none" stroke="#fff"/><text x="300" y="80" fill="#bbb" font-size="13" font-family="Georgia, serif">taller, thinner</text></svg>
+<figcaption>The integrals stay 1. The pointwise limit is 0. Dominated convergence needs a dominant.</figcaption>
+</figure>
+</section>
+<section id="sets">
+<h2>Escalating sets</h2>
+<p>Five sets. Finish a set before you touch the next. Full sentences, not a circled answer.</p>
+<h3>Set 1. Measure</h3><ol><li>Outer measure of a countable set.</li><li>Prove countable subadditivity of outer measure.</li><li>Show a single point has measure zero.</li><li>Why is the Vitali set nonmeasurable? Outline, including where choice is used.</li><li>Intervals are measurable. Say which theorem you are quoting.</li></ol><h3>Set 2. Functions</h3><ol><li>A function is measurable iff preimages of intervals \((-\infty,a)\) are measurable. Prove one direction.</li><li>Pointwise limits of measurable functions are measurable.</li><li>Simple-function approximation of a nonnegative measurable function.</li><li>Integral of a simple function, well-defined.</li><li>\(\int n 1_{(0,1/n)}=1\).</li></ol><h3>Set 3. Theorems</h3><ol><li>State monotone convergence.</li><li>Deduce Fatou.</li><li>Deduce dominated convergence.</li><li>Give a case where Fatou is strict.</li><li>Give a case where there is no integrable dominant.</li></ol><h3>Set 4. Product and L^p</h3><ol><li>Fubini’s hypothesis for signed functions.</li><li>Hölder for sums, then for integrals.</li><li>Prove L^1 completeness with the subsequence trick.</li><li>\(\|f\|_\infty\) as an essential supremum. Give a function where the essential supremum is smaller than every bound you would guess from pointwise values on the rationals... or explain why that cannot happen for a continuous function.</li><li>Minkowski’s inequality, stated.</li></ol><h3>Set 5. Ceiling</h3><ol><li>All three convergence theorems, memory.</li><li>Completeness of L^p.</li><li>One counterexample page, three examples.</li><li>Fubini outline.</li><li>Oral definition of the integral.</li></ol>
+</section>
+<section id="bank">
+<h2>Return bank</h2>
+<p>Ten problems to meet again. Logging a writeup schedules them at 1 day, 7 days, and 30 days in this browser.</p>
+<ul id="due-list" class="clean"></ul>
+<ol>
+<li class="bank-item" data-bank-id="measure-theory-b1" data-bank-label="Countable sets have measure zero.">Countable sets have measure zero. <button type="button" data-log-review="measure-theory-b1">Log a writeup</button></li><li class="bank-item" data-bank-id="measure-theory-b2" data-bank-label="The escaping spike.">The escaping spike. <button type="button" data-log-review="measure-theory-b2">Log a writeup</button></li><li class="bank-item" data-bank-id="measure-theory-b3" data-bank-label="Dominated convergence, full statement.">Dominated convergence, full statement. <button type="button" data-log-review="measure-theory-b3">Log a writeup</button></li><li class="bank-item" data-bank-id="measure-theory-b4" data-bank-label="Fatou from monotone convergence.">Fatou from monotone convergence. <button type="button" data-log-review="measure-theory-b4">Log a writeup</button></li><li class="bank-item" data-bank-id="measure-theory-b5" data-bank-label="Measurable functions are closed under pointwise limits.">Measurable functions are closed under pointwise limits. <button type="button" data-log-review="measure-theory-b5">Log a writeup</button></li><li class="bank-item" data-bank-id="measure-theory-b6" data-bank-label="L^1 completeness.">L^1 completeness. <button type="button" data-log-review="measure-theory-b6">Log a writeup</button></li><li class="bank-item" data-bank-id="measure-theory-b7" data-bank-label="Hölder.">Hölder. <button type="button" data-log-review="measure-theory-b7">Log a writeup</button></li><li class="bank-item" data-bank-id="measure-theory-b8" data-bank-label="Fubini’s σ-finite hypothesis.">Fubini’s σ-finite hypothesis. <button type="button" data-log-review="measure-theory-b8">Log a writeup</button></li><li class="bank-item" data-bank-id="measure-theory-b9" data-bank-label="Vitali set, where choice enters.">Vitali set, where choice enters. <button type="button" data-log-review="measure-theory-b9">Log a writeup</button></li><li class="bank-item" data-bank-id="measure-theory-b10" data-bank-label="Essential supremum.">Essential supremum. <button type="button" data-log-review="measure-theory-b10">Log a writeup</button></li>
+</ol>
+</section>
+<section id="oral">
+<h2>Oral pass</h2>
+<p>Define a measure, state dominated convergence with the dominant, and explain the spike counterexample. No notes.</p>
+<p><label><input type="checkbox" data-slug="measure-theory" data-stage="oral"> I explained this from a blank page, out loud, with no notes.</label></p>
+</section>
+<div class="pager"><a href="../topics/complex-analysis.html">← Complex Analysis</a><a href="../topics/pde.html">Partial Differential Equations →</a></div>
+
+<footer class="colophon">Black page, white type. Progress stays in this browser. No account, no analytics.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real Analysis</title>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script defer src="../js/curriculum.js"></script>
+<script defer src="../js/grades.js"></script>
+<script defer src="../js/site.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  }
+});
+</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav"><a class="brand" href="../index.html">Disgusting at Math</a><a href="../index.html">Map</a><a href="../method.html">Method</a><a href="../resources.html">Resources</a><a href="../progress.html">Progress</a></nav>
+
+<p class="kicker">Math · 08</p>
+<h1>Real Analysis</h1>
+<div class="pager"><a href="../topics/ode.html">← Ordinary Differential Equations</a><a href="../topics/topology.html">Topology →</a></div>
+
+<nav class="toc" aria-label="On this page">
+<p class="kicker">On this page</p>
+<ol>
+<li><a href="#attack">Problems first</a></li>
+<li><a href="#prereqs">Prerequisites</a></li>
+<li><a href="#what">What this actually is</a></li>
+<li><a href="#core">Core results</a></li>
+<li><a href="#ladder">The ladder</a></li>
+<li><a href="#hardest">Hardest questions</a></li>
+<li><a href="#gate">Mastery gate</a></li>
+<li><a href="#diagrams">Diagrams</a></li>
+<li><a href="#sets">Escalating sets</a></li>
+<li><a href="#bank">Return bank</a></li>
+<li><a href="#oral">Oral pass</a></li>
+</ol>
+</nav>
+
+<section id="attack">
+<h2>Problems first</h2>
+<p>Attempt these before you open a book or a video. Write the argument in the work box and the conclusion in the answer box. Check counts the problem only when both pass, and it does not open the solution. The solution stays locked for twenty minutes after you start the timer.</p>
+
+<article class="attack">
+<p class="kicker">Attack 1</p>
+<p>Let \(S=\{x\in\mathbb{R}:x^2<2\}\). Using completeness, prove that \(\alpha=\sup S\) satisfies \(\alpha^2=2\).</p>
+<form class="grade" data-grade="real-analysis-a1">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="real-analysis-a1">Check work and answer</button></p>
+<p class="verdict" data-verdict="real-analysis-a1"></p>
+</form>
+<p><button type="button" data-start="real-analysis-a1">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="real-analysis-a1">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="real-analysis-a1" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-real-analysis-a1" hidden><p>\(S\) is nonempty and bounded above, so \(\alpha\) exists. If \(\alpha^2<2\), a small enough positive increment stays in \(S\), contradicting the least-upper-bound property. If \(\alpha^2>2\), a slightly smaller number is still an upper bound. The only remaining possibility is \(\alpha^2=2\). Write the increments explicitly: if \(\alpha^2<2\), choose \(h>0\) with \(h<1\) and \(h<(2-\alpha^2)/(2\alpha+1)\).</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 2</p>
+<p>Prove that a convergent sequence is Cauchy.</p>
+<form class="grade" data-grade="real-analysis-a2">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="real-analysis-a2">Check work and answer</button></p>
+<p class="verdict" data-verdict="real-analysis-a2"></p>
+</form>
+<p><button type="button" data-start="real-analysis-a2">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="real-analysis-a2">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="real-analysis-a2" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-real-analysis-a2" hidden><p>If \(a_n\to L\), take \(\varepsilon/2\). Past \(N\), both \(a_n\) and \(a_m\) are within \(\varepsilon/2\) of \(L\), so they are within \(\varepsilon\) of each other by the triangle inequality.</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 3</p>
+<p>Show that \(f(x)=1/x\) on \((0,1]\) is continuous but not uniformly continuous.</p>
+<form class="grade" data-grade="real-analysis-a3">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="real-analysis-a3">Check work and answer</button></p>
+<p class="verdict" data-verdict="real-analysis-a3"></p>
+</form>
+<p><button type="button" data-start="real-analysis-a3">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="real-analysis-a3">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="real-analysis-a3" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-real-analysis-a3" hidden><p>Continuity at each \(c\in(0,1]\) is the usual reciprocal estimate. Not uniform: take \(x_n=1/n\), \(y_n=1/(n+1)\). The gaps go to 0 while \(|f(x_n)-f(y_n)|=1\). So no single \(\delta\) serves \(\varepsilon=1/2\).</p></div>
+</article>
+</section>
+<section id="prereqs">
+<h2>Prerequisites</h2>
+<ul class="clean"><li><a href="calc-1.html">Single-Variable Calculus</a></li><li><a href="proof-logic.html">Proof and Logic</a></li></ul>
+</section>
+<section id="what">
+<h2>What this actually is</h2>
+
+<p>Real analysis is the repair job on calculus. Every limit, derivative, and integral you have used is given hypotheses and a proof, and the places the proof fails become the famous counterexamples: a continuous nowhere-differentiable function, a sequence of continuous functions whose limit is discontinuous, a derivative that is not integrable in the Riemann sense on a fat set. The spine is the completeness of the real line, sequential compactness, uniform continuity on compact intervals, the Riemann integral, and uniform convergence.</p>
+<p>Rudin’s Principles of Mathematical Analysis is the ceiling. The third-edition ISBN catalogued for it is 978-0-07-054235-8. It is paid, and its exercises are qualifying-exam material. You should not open Rudin as the first book. Jiří Lebl’s Basic Analysis is free, careful, and enough to learn the subject. Abbott’s Understanding Analysis, ISBN 978-1-4939-2711-1, is the paid book people love because the motivation is written in English; use it if you buy one. Pugh, ISBN 978-3-319-17770-0, is the other paid route, with harder exercises. MIT 18.100 is the course with problem sets.</p>
+<p>ε–δ is not a style. It is the definition. If you translate it into a picture and then stop writing inequalities, you have not done the proof.</p>
+
+</section>
+<section id="core">
+<h2>Core results</h2>
+<p>Statements only. Write the argument before you reveal it. A revealed proof you did not attempt is a paragraph you will not be able to rebuild at 2am.</p>
+<ol class="spine">
+
+<li>
+<p><strong>Completeness.</strong> Every nonempty subset of \(\mathbb{R}\) that is bounded above has a least upper bound. Equivalent forms: every Cauchy sequence converges; every monotone bounded sequence converges; nested closed intervals have nonempty intersection.</p>
+<p><button type="button" data-show-proof="proof-real-analysis-1">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-real-analysis-1" hidden><p>From the least-upper-bound property to monotone convergence: the supremum of the set of terms is the limit. Cauchy completeness from monotone convergence uses a subsequence of dyadic windows. You should write one direction in full and know the names of the others.</p></div>
+</li>
+<li>
+<p><strong>Continuity.</strong> Continuity at a point is the ε–δ definition. On a compact set, a continuous real function is uniformly continuous, bounded, and attains its max and min. The intermediate value theorem holds on an interval.</p>
+<p><button type="button" data-show-proof="proof-real-analysis-2">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-real-analysis-2" hidden><p>Uniform continuity on \([a,b]\): if it failed, sequences with gaps going to 0 and values separated by a fixed ε would have a convergent subsequence by Bolzano–Weierstrass, and continuity at the limit point would be contradicted. The extreme value theorem is the same compactness plus the fact that the image of an interval is an interval.</p></div>
+</li>
+<li>
+<p><strong>Differentiation.</strong> Differentiability implies continuity. The mean value theorem holds. There exist functions continuous everywhere and differentiable nowhere; you should know that Weierstrass built one, and be able to state what that forbids you from claiming.</p>
+<p><button type="button" data-show-proof="proof-real-analysis-3">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-real-analysis-3" hidden><p>Differentiability implies continuity because the difference \(f(x)-f(a)=f'(a)(x-a)+o(x-a)\) goes to 0. The mean value theorem is the one you already proved in calculus, now with hypotheses you do not skip. The nowhere-differentiable example is a uniform limit of a series of jagged continuous functions; read one construction in Lebl or Abbott and rewrite the estimate.</p></div>
+</li>
+<li>
+<p><strong>Riemann integral.</strong> A bounded function on \([a,b]\) is Riemann integrable if and only if for every \(\varepsilon>0\) there is a partition whose upper and lower sums differ by less than \(\varepsilon\). Continuous functions are integrable. A function with finitely many discontinuities is integrable. The fundamental theorem needs continuity of \(f\), or integrability of \(f\) plus continuity of \(F\) in the other direction, and you should state which form you mean.</p>
+<p><button type="button" data-show-proof="proof-real-analysis-4">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-real-analysis-4" hidden><p>Uniform continuity gives a partition where the oscillation on every subinterval is small, hence upper minus lower is small. Finite discontinuities are isolated in small intervals whose total length makes their contribution less than ε.</p></div>
+</li>
+<li>
+<p><strong>Uniform convergence.</strong> A uniform limit of continuous functions is continuous. The Weierstrass M-test gives uniform convergence of a series. Power series converge uniformly on compact subsets of the open interval of convergence, so they may be integrated and differentiated termwise there.</p>
+<p><button type="button" data-show-proof="proof-real-analysis-5">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-real-analysis-5" hidden><p>The ε/3 argument: choose one function in the sequence within ε/3 of the limit everywhere, then use its continuity. The M-test compares with a convergent numerical series. Termwise integration of power series follows from uniform convergence on a smaller closed interval.</p></div>
+</li>
+</ol>
+</section>
+<section id="ladder">
+<h2>The ladder</h2>
+<p>Four rungs, in order. Do not skip a rung because the next one looks more serious.</p>
+<h3>Tier 0 / First contact</h3><p class="tier-label">Watch or read once. Do not study from this.</p><p class="resource"><a href="https://terrytao.wordpress.com/books/analysis-i/">Tao, books page for Analysis I</a><br><span class="why">Read once, do not study from this. It is a prospectus for a construction of the reals. It tells you the subject is about building the line, not about computing more integrals.</span></p><h3>Tier 1 / Main text</h3><p class="tier-label">The thing you work through.</p><p class="resource"><a href="https://www.jirka.org/ra/realanal.pdf">Jiří Lebl, Basic Analysis, and MIT 18.100A</a><br><span class="why">Free, current, and written as a course. The HTML home is https://www.jirka.org/ra/ . MIT 18.100A supplies another problem-set culture: https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/ . Abbott, ISBN 978-1-4939-2711-1, is the paid book to buy if Lebl’s tone is too dry.</span></p><h3>Tier 2 / Hard problems</h3><p class="tier-label">The problem book.</p><p class="resource"><a href="https://ocw.mit.edu/courses/18-100b-real-analysis-spring-2025/">18.100B and Pugh’s exercises</a><br><span class="why">18.100B is the harder MIT track. Pugh, Real Mathematical Analysis, ISBN 978-3-319-17770-0, is paid and is the exercise upgrade. Do the 18.100 sets either way.</span></p><h3>Tier 3 / The ceiling</h3><p class="tier-label">The hardest questions that exist at this level.</p><p class="resource"><a href="https://ocw.mit.edu/courses/18-100b-real-analysis-spring-2025/">Rudin, Principles of Mathematical Analysis, ISBN 978-0-07-054235-8</a><br><span class="why">Baby Rudin is paid and is the qualifying-exam ceiling. No free legal PDF was verified. The link is 18.100B, the public problem set at that altitude. Work Rudin’s Chapter 1–8 exercises if you own the book. Do not read the solutions collections first.</span></p>
+
+<ul class="checks">
+<li><label><input type="checkbox" data-slug="real-analysis" data-stage="contact"> Tier 0 done once, then closed.</label></li>
+<li><label><input type="checkbox" data-slug="real-analysis" data-stage="text"> Main text worked, exercises written.</label></li>
+<li><label><input type="checkbox" data-slug="real-analysis" data-stage="hard"> Hard-problem set written up.</label></li>
+<li><label><input type="checkbox" data-slug="real-analysis" data-stage="ceiling"> Ceiling problems attempted under the timer.</label></li>
+<li><label><input type="checkbox" data-slug="real-analysis" data-stage="gate"> Mastery gate passed.</label></li>
+</ul>
+
+</section>
+<section id="hardest">
+<h2>Hardest questions</h2>
+<p>Names and links. The problem text stays on the source site. Copyrighted contest problems are not copied here. What follows is where they are and why they hurt.</p>
+<ol class="spine">
+<li><a href="https://www.jirka.org/ra/realanal.pdf">Lebl, the exercises on completeness, uniform continuity, and uniform convergence</a><br><span class="why">They are written to be done. The hard ones are the counterexamples, which punish a missing quantifier.</span></li><li><a href="https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/">MIT 18.100A problem sets</a><br><span class="why">A real course’s idea of a week of work, not a highlight.</span></li><li><a href="https://ocw.mit.edu/courses/18-100b-real-analysis-spring-2025/">MIT 18.100B</a><br><span class="why">The harder track. Use it when 18.100A feels like translation rather than struggle.</span></li><li><a href="https://www.jirka.org/ra/">Rudin, Chapters 1–8, the exercises</a><br><span class="why">Rudin is paid and unlinked as a file. This link is Lebl’s site, where you should be before you spend money. Rudin’s exercises are hard because the hints are absent and the theorems are stated at full strength.</span></li><li><a href="https://www.jirka.org/ra/realanal.pdf">Construct \(\sqrt{2}\) from the least-upper-bound property, timed, blank page</a><br><span class="why">If this takes more than a clean page, completeness is still a word.</span></li>
+</ol>
+</section>
+<section id="gate">
+<h2>Mastery gate</h2>
+<p>Pass: written proofs, from memory, of: Cauchy sequences converge in \(\mathbb{R}\) (one direction, named), uniform continuity of a continuous function on \([a,b]\), and the ε/3 proof that a uniform limit of continuous functions is continuous. Plus ten Lebl exercises you got wrong on the first attempt, rewritten. Fail if any proof swaps the order of quantifiers.</p>
+<p><label><input type="checkbox" data-slug="real-analysis" data-stage="gate"> I passed this gate with written solutions.</label></p>
+</section>
+<section id="diagrams">
+<h2>Diagrams</h2>
+<figure class="diagram">
+<svg viewBox="0 0 640 360" role="img" aria-label="An epsilon tube around a function"><rect width="640" height="360" fill="#000"/><line x1="0" y1="0" x2="0" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="40" y1="0" x2="40" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="80" y1="0" x2="80" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="120" y1="0" x2="120" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="160" y1="0" x2="160" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="200" y1="0" x2="200" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="240" y1="0" x2="240" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="280" y1="0" x2="280" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="320" y1="0" x2="320" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="360" y1="0" x2="360" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="400" y1="0" x2="400" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="440" y1="0" x2="440" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="480" y1="0" x2="480" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="520" y1="0" x2="520" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="560" y1="0" x2="560" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="600" y1="0" x2="600" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="640" y1="0" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="0" x2="640" y2="0" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="40" x2="640" y2="40" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="80" x2="640" y2="80" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="120" x2="640" y2="120" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="160" x2="640" y2="160" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="200" x2="640" y2="200" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="240" x2="640" y2="240" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="280" x2="640" y2="280" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="320" x2="640" y2="320" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="360" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><path d="M60 220 C 140 210, 180 120, 240 140 S 340 240, 400 160 520 80, 580 120" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M60 190 C 140 180, 180 90, 240 110 S 340 210, 400 130 520 50, 580 90" fill="none" stroke="rgba(255,255,255,0.45)"/><path d="M60 250 C 140 240, 180 150, 240 170 S 340 270, 400 190 520 110, 580 150" fill="none" stroke="rgba(255,255,255,0.45)"/><text x="70" y="80" fill="#bbb" font-size="13" font-family="Georgia, serif">ε tube</text></svg>
+<figcaption>Uniform continuity is one δ for the whole interval. Pointwise continuity is a δ that depends on the point.</figcaption>
+</figure>
+</section>
+<section id="sets">
+<h2>Escalating sets</h2>
+<p>Five sets. Finish a set before you touch the next. Full sentences, not a circled answer.</p>
+<h3>Set 1. The line</h3><ol><li>Prove the archimedean property from the least-upper-bound property.</li><li>Construct \(\sqrt{2}\) as a supremum.</li><li>Prove every monotone bounded sequence converges.</li><li>Show that a set of reals with an upper bound has a least upper bound, by naming the axiom you use. Do not prove the axiom.</li><li>Give a bounded set of rationals with no rational least upper bound.</li></ol><h3>Set 2. Sequences</h3><ol><li>Prove convergent implies Cauchy.</li><li>Prove a Cauchy sequence is bounded.</li><li>Bolzano–Weierstrass: every bounded sequence has a convergent subsequence. Write it.</li><li>Give a sequence with two distinct limit points.</li><li>Show \((-1)^n\) does not converge, from the definition.</li></ol><h3>Set 3. Continuity and derivatives</h3><ol><li>ε–δ proof that \(x^2\) is continuous at 3.</li><li>Prove \(1/x\) is not uniformly continuous on \((0,1]\).</li><li>Prove the intermediate value theorem.</li><li>Prove the mean value theorem from Rolle, with hypotheses.</li><li>Show differentiability implies continuity.</li></ol><h3>Set 4. Integral and series of functions</h3><ol><li>Prove a continuous function on \([a,b]\) is Riemann integrable.</li><li>Give a function that is discontinuous at one point and still integrable.</li><li>Prove the ε/3 argument for uniform limits.</li><li>State the M-test and use it on \(\sum x^n/n^2\) on \([-1,1]\).</li><li>Show that term-by-term integration of a power series is valid inside the radius.</li></ol><h3>Set 5. Ceiling</h3><ol><li>Ten hard Lebl exercises, rewritten after you were stuck.</li><li>One 18.100 problem set, chosen from the middle of the course.</li><li>Rudin Chapter 2 exercises if you own it; otherwise the compactness section of Lebl, all of it.</li><li>Blank-page proof of Bolzano–Weierstrass.</li><li>A counterexample to interchanging limit and integral, written with the functions explicit.</li></ol>
+</section>
+<section id="bank">
+<h2>Return bank</h2>
+<p>Ten problems to meet again. Logging a writeup schedules them at 1 day, 7 days, and 30 days in this browser.</p>
+<ul id="due-list" class="clean"></ul>
+<ol>
+<li class="bank-item" data-bank-id="real-analysis-b1" data-bank-label="\(\sqrt{2}\) as a supremum.">\(\sqrt{2}\) as a supremum. <button type="button" data-log-review="real-analysis-b1">Log a writeup</button></li><li class="bank-item" data-bank-id="real-analysis-b2" data-bank-label="Convergent implies Cauchy.">Convergent implies Cauchy. <button type="button" data-log-review="real-analysis-b2">Log a writeup</button></li><li class="bank-item" data-bank-id="real-analysis-b3" data-bank-label="\(1/x\) not uniformly continuous on \((0,1]\).">\(1/x\) not uniformly continuous on \((0,1]\). <button type="button" data-log-review="real-analysis-b3">Log a writeup</button></li><li class="bank-item" data-bank-id="real-analysis-b4" data-bank-label="Bolzano–Weierstrass.">Bolzano–Weierstrass. <button type="button" data-log-review="real-analysis-b4">Log a writeup</button></li><li class="bank-item" data-bank-id="real-analysis-b5" data-bank-label="Intermediate value theorem.">Intermediate value theorem. <button type="button" data-log-review="real-analysis-b5">Log a writeup</button></li><li class="bank-item" data-bank-id="real-analysis-b6" data-bank-label="Continuous on a compact interval implies integrable.">Continuous on a compact interval implies integrable. <button type="button" data-log-review="real-analysis-b6">Log a writeup</button></li><li class="bank-item" data-bank-id="real-analysis-b7" data-bank-label="ε/3 for uniform limits.">ε/3 for uniform limits. <button type="button" data-log-review="real-analysis-b7">Log a writeup</button></li><li class="bank-item" data-bank-id="real-analysis-b8" data-bank-label="M-test on \(\sum x^n/n^2\).">M-test on \(\sum x^n/n^2\). <button type="button" data-log-review="real-analysis-b8">Log a writeup</button></li><li class="bank-item" data-bank-id="real-analysis-b9" data-bank-label="Differentiable implies continuous.">Differentiable implies continuous. <button type="button" data-log-review="real-analysis-b9">Log a writeup</button></li><li class="bank-item" data-bank-id="real-analysis-b10" data-bank-label="One counterexample you had to rebuild twice.">One counterexample you had to rebuild twice. <button type="button" data-log-review="real-analysis-b10">Log a writeup</button></li>
+</ol>
+</section>
+<section id="oral">
+<h2>Oral pass</h2>
+<p>State completeness, prove that continuous functions on compact intervals are uniformly continuous, and explain uniform versus pointwise convergence with an example. No notes.</p>
+<p><label><input type="checkbox" data-slug="real-analysis" data-stage="oral"> I explained this from a blank page, out loud, with no notes.</label></p>
+</section>
+<div class="pager"><a href="../topics/ode.html">← Ordinary Differential Equations</a><a href="../topics/topology.html">Topology →</a></div>
+
+<footer class="colophon">Black page, white type. Progress stays in this browser. No account, no analytics.</footer>
+</div>
+</body>
+</html>

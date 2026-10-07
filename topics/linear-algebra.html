@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear Algebra</title>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script defer src="../js/curriculum.js"></script>
+<script defer src="../js/grades.js"></script>
+<script defer src="../js/site.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  }
+});
+</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav"><a class="brand" href="../index.html">Disgusting at Math</a><a href="../index.html">Map</a><a href="../method.html">Method</a><a href="../resources.html">Resources</a><a href="../progress.html">Progress</a></nav>
+
+<p class="kicker">Math · 05</p>
+<h1>Linear Algebra</h1>
+<div class="pager"><a href="../topics/calc-1.html">← Single-Variable Calculus</a><a href="../topics/calc-3.html">Multivariable and Vector Calculus →</a></div>
+
+<nav class="toc" aria-label="On this page">
+<p class="kicker">On this page</p>
+<ol>
+<li><a href="#attack">Problems first</a></li>
+<li><a href="#prereqs">Prerequisites</a></li>
+<li><a href="#what">What this actually is</a></li>
+<li><a href="#core">Core results</a></li>
+<li><a href="#ladder">The ladder</a></li>
+<li><a href="#hardest">Hardest questions</a></li>
+<li><a href="#gate">Mastery gate</a></li>
+<li><a href="#diagrams">Diagrams</a></li>
+<li><a href="#sets">Escalating sets</a></li>
+<li><a href="#bank">Return bank</a></li>
+<li><a href="#oral">Oral pass</a></li>
+</ol>
+</nav>
+
+<section id="attack">
+<h2>Problems first</h2>
+<p>Attempt these before you open a book or a video. Write the argument in the work box and the conclusion in the answer box. Check counts the problem only when both pass, and it does not open the solution. The solution stays locked for twenty minutes after you start the timer.</p>
+
+<article class="attack">
+<p class="kicker">Attack 1</p>
+<p>Do the vectors \((1,2)\) and \((2,4)\) form a basis of \(\mathbb{R}^2\)?</p>
+<form class="grade" data-grade="linear-algebra-a1">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="linear-algebra-a1">Check work and answer</button></p>
+<p class="verdict" data-verdict="linear-algebra-a1"></p>
+</form>
+<p><button type="button" data-start="linear-algebra-a1">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="linear-algebra-a1">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="linear-algebra-a1" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-linear-algebra-a1" hidden><p>No. The second is twice the first, so they are linearly dependent and their span is a line, not the plane. A basis of \(\mathbb{R}^2\) needs two independent vectors.</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 2</p>
+<p>Solve \(x+y=1\), \(2x+2y=2\), and describe the solution set.</p>
+<form class="grade" data-grade="linear-algebra-a2">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="linear-algebra-a2">Check work and answer</button></p>
+<p class="verdict" data-verdict="linear-algebra-a2"></p>
+</form>
+<p><button type="button" data-start="linear-algebra-a2">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="linear-algebra-a2">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="linear-algebra-a2" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-linear-algebra-a2" hidden><p>The second equation is twice the first, so there is one constraint. The solutions are all \((x,1-x)\) for \(x\in\mathbb{R}\), a line.</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 3</p>
+<p>Compute \(\det\begin{pmatrix}1&2\\3&4\end{pmatrix}\). What does the sign tell you?</p>
+<form class="grade" data-grade="linear-algebra-a3">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="linear-algebra-a3">Check work and answer</button></p>
+<p class="verdict" data-verdict="linear-algebra-a3"></p>
+</form>
+<p><button type="button" data-start="linear-algebra-a3">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="linear-algebra-a3">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="linear-algebra-a3" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-linear-algebra-a3" hidden><p>\(1\cdot 4-2\cdot 3=-2\). The absolute value is the area of the parallelogram spanned by the columns. The negative sign means the ordered basis \((1,3)\), \((2,4)\) is opposite the standard orientation.</p></div>
+</article>
+</section>
+<section id="prereqs">
+<h2>Prerequisites</h2>
+<ul class="clean"><li><a href="proof-logic.html">Proof and Logic</a></li></ul>
+</section>
+<section id="what">
+<h2>What this actually is</h2>
+
+<p>Linear algebra is the study of maps that send lines through the origin to lines through the origin, and of the finite-dimensional spaces those maps act on. Once dimension is finite, every abstract question becomes a question about matrices, and every matrix question is secretly about a linear map that did not want coordinates. The objects you must be able to move between without thinking are: span, independence, basis, dimension, rank, nullity, determinant, eigenvalues, inner products, and the singular value decomposition.</p>
+<p>Strang’s MIT course is the computational and geometric introduction. Axler’s Linear Algebra Done Right, 4th edition, is free from the author and refuses to lead with determinants; that is the right second pass, not the first, because you still need to compute. Treil’s Linear Algebra Done Wrong is the free book that keeps determinants and still proves things. Learn Anything’s linear algebra page puts the 3Blue1Brown series and the Georgia Tech interactive text near the top. Both are used below. The rest of that page is software libraries and unrelated algebra, and it was ignored.</p>
+<p>The Putnam problems that are “just linear algebra” are short and brutal. They assume you can see a matrix as a map.</p>
+
+</section>
+<section id="core">
+<h2>Core results</h2>
+<p>Statements only. Write the argument before you reveal it. A revealed proof you did not attempt is a paragraph you will not be able to rebuild at 2am.</p>
+<ol class="spine">
+
+<li>
+<p><strong>Bases and dimension.</strong> A basis is a linearly independent spanning set. Every basis of a space has the same number of vectors; that number is the dimension. Any independent set extends to a basis, and any spanning set contains a basis.</p>
+<p><button type="button" data-show-proof="proof-linear-algebra-1">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-linear-algebra-1" hidden><p>The replacement theorem: if \(n\) vectors span and \(m\) vectors are independent, then \(m\le n\). Apply it both ways to two bases. Extension is replacement run until the span is the whole space.</p></div>
+</li>
+<li>
+<p><strong>Rank–nullity.</strong> For a linear map \(T:V\to W\) between finite-dimensional spaces, \(\dim\ker T+\dim\operatorname{im} T=\dim V\).</p>
+<p><button type="button" data-show-proof="proof-linear-algebra-2">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-linear-algebra-2" hidden><p>Take a basis of the kernel and extend it to a basis of \(V\). The images of the extra basis vectors are a basis of the image. Count.</p></div>
+</li>
+<li>
+<p><strong>Determinant.</strong> The determinant is the unique alternating multilinear form on columns that is 1 on the identity. It is zero exactly when the columns are dependent. It multiplies under matrix multiplication.</p>
+<p><button type="button" data-show-proof="proof-linear-algebra-3">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-linear-algebra-3" hidden><p>Existence is the Leibniz formula. Uniqueness is expansion along the definition by column operations. Multiplicativity can be seen by fixing one matrix and noticing both sides, as functions of the other, are alternating and multilinear and agree on the identity after scaling.</p></div>
+</li>
+<li>
+<p><strong>Eigenvalues.</strong> \(\lambda\) is an eigenvalue of \(T\) when \(Tv=\lambda v\) for some \(v\ne 0\). It is a root of the characteristic polynomial \(\det(A-\lambda I)=0\). A matrix is diagonalizable when there is a basis of eigenvectors, which happens in particular when the characteristic polynomial splits into distinct linear factors.</p>
+<p><button type="button" data-show-proof="proof-linear-algebra-4">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-linear-algebra-4" hidden><p>\(A-\lambda I\) has a nontrivial kernel exactly when its determinant vanishes. Distinct eigenvalues produce independent eigenvectors: a shortest dependence relation can be hit with \(A\) and subtracted to get a shorter one.</p></div>
+</li>
+<li>
+<p><strong>Inner products and SVD.</strong> An inner product induces a norm and orthogonality. An orthonormal set is independent. The orthogonal projection onto a subspace \(U\) is the unique vector in \(U\) whose error is orthogonal to \(U\). Every real \(m\times n\) matrix \(A\) factors as \(A=U\Sigma V^{T}\) with \(U,V\) orthogonal and \(\Sigma\) rectangular diagonal; the diagonal entries are the singular values, square roots of eigenvalues of \(A^{T}A\).</p>
+<p><button type="button" data-show-proof="proof-linear-algebra-5">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-linear-algebra-5" hidden><p>Projection: expand in an orthonormal basis of \(U\) and match coefficients, or minimize the quadratic. SVD: \(A^{T}A\) is symmetric positive semidefinite, hence orthogonally diagonalizable, and the nonzero eigenvalues give the squared singular values. The rest is bookkeeping with orthonormal bases of the domain and codomain.</p></div>
+</li>
+</ol>
+</section>
+<section id="ladder">
+<h2>The ladder</h2>
+<p>Four rungs, in order. Do not skip a rung because the next one looks more serious.</p>
+<h3>Tier 0 / First contact</h3><p class="tier-label">Watch or read once. Do not study from this.</p><p class="resource"><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">3Blue1Brown, Essence of Linear Algebra</a><br><span class="why">Watch once, do not study from this. It is also the one Learn Anything linear-algebra link that earns the preview slot. Close it before you touch a problem set.</span></p><h3>Tier 1 / Main text</h3><p class="tier-label">The thing you work through.</p><p class="resource"><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/">MIT 18.06 (Strang) and the Georgia Tech interactive text</a><br><span class="why">18.06 is the course: lectures, problem sets, exams. The free book you can read beside it is Margalit and Rabinoff, Interactive Linear Algebra: https://textbooks.math.gatech.edu/ila/ . Strang, Introduction to Linear Algebra, ISBN 978-1-7331466-7-8, is the paid book the course tracks; the MIT page is https://math.mit.edu/~gs/linearalgebra/ . The free pair is better as a daily diet because the exams are public.</span></p><h3>Tier 2 / Hard problems</h3><p class="tier-label">The problem book.</p><p class="resource"><a href="https://linear.axler.net/LADR4e.pdf">Axler, Linear Algebra Done Right, 4th edition, and Treil, Linear Algebra Done Wrong</a><br><span class="why">Axler’s PDF is free from the author; ISBN 978-3-031-41025-3. Treil is the determinant-friendly proof book: https://www.math.brown.edu/streil/papers/LADW/LADW.html . Use Axler for the spectral theorem and Treil when you still need to compute a determinant without shame.</span></p><h3>Tier 3 / The ceiling</h3><p class="tier-label">The hardest questions that exist at this level.</p><p class="resource"><a href="https://people.math.binghamton.edu/borisov/Putnam/SelectedProblemList.pdf">Borisov’s topic-sorted Putnam list, plus Matoušek’s miniatures</a><br><span class="why">The PDF sorts Putnam problems by subject, including linear algebra. Matoušek, Thirty-three Miniatures, is a free PDF of serious applications: https://kam.mff.cuni.cz/~matousek/stml-53-matousek-1.pdf . Prasolov’s problem book was not verified as a stable free file, so it is not linked. Gelfand’s Lectures on Linear Algebra is the right Soviet companion and is paid; no free legal copy was verified.</span></p>
+
+<ul class="checks">
+<li><label><input type="checkbox" data-slug="linear-algebra" data-stage="contact"> Tier 0 done once, then closed.</label></li>
+<li><label><input type="checkbox" data-slug="linear-algebra" data-stage="text"> Main text worked, exercises written.</label></li>
+<li><label><input type="checkbox" data-slug="linear-algebra" data-stage="hard"> Hard-problem set written up.</label></li>
+<li><label><input type="checkbox" data-slug="linear-algebra" data-stage="ceiling"> Ceiling problems attempted under the timer.</label></li>
+<li><label><input type="checkbox" data-slug="linear-algebra" data-stage="gate"> Mastery gate passed.</label></li>
+</ul>
+
+</section>
+<section id="hardest">
+<h2>Hardest questions</h2>
+<p>Names and links. The problem text stays on the source site. Copyrighted contest problems are not copied here. What follows is where they are and why they hurt.</p>
+<ol class="spine">
+<li><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/">MIT 18.06 exams</a><br><span class="why">They ask you to see a factorization or a subspace, not to row-reduce a random 4×4 for an hour.</span></li><li><a href="https://people.math.binghamton.edu/borisov/Putnam/SelectedProblemList.pdf">Borisov, Selected Putnam problems, the linear algebra section</a><br><span class="why">The list is short and the problems are real. Each one is a theorem in disguise.</span></li><li><a href="https://kskedlaya.org/putnam-archive/2008.pdf">Putnam 2008</a><br><span class="why">Use it as a second paper after Borisov tells you which problems are linear algebra. The hardness is recognizing the map.</span></li><li><a href="https://linear.axler.net/LADR4e.pdf">Axler, 4th edition, the exercises on operators and the spectral theorem</a><br><span class="why">No matrices to hide in. If the proof needs a basis, you have to say so.</span></li><li><a href="https://kam.mff.cuni.cz/~matousek/stml-53-matousek-1.pdf">Matoušek, Thirty-three Miniatures</a><br><span class="why">Short chapters, each a real application. The linear algebra is not labeled as homework.</span></li>
+</ol>
+</section>
+<section id="gate">
+<h2>Mastery gate</h2>
+<p>Pass: one MIT 18.06 exam, closed book, written in full, and five problems from Borisov’s linear-algebra section with complete proofs. You must also state and prove rank–nullity and the spectral theorem for a real symmetric matrix, from a blank page. Fail if singular value decomposition is a slogan you cannot connect to eigenvalues of \(A^{T}A\).</p>
+<p><label><input type="checkbox" data-slug="linear-algebra" data-stage="gate"> I passed this gate with written solutions.</label></p>
+</section>
+<section id="diagrams">
+<h2>Diagrams</h2>
+<figure class="diagram">
+<svg viewBox="0 0 640 360" role="img" aria-label="Orthogonal projection of a vector onto a line"><rect width="640" height="360" fill="#000"/><line x1="0" y1="0" x2="0" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="40" y1="0" x2="40" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="80" y1="0" x2="80" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="120" y1="0" x2="120" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="160" y1="0" x2="160" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="200" y1="0" x2="200" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="240" y1="0" x2="240" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="280" y1="0" x2="280" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="320" y1="0" x2="320" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="360" y1="0" x2="360" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="400" y1="0" x2="400" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="440" y1="0" x2="440" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="480" y1="0" x2="480" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="520" y1="0" x2="520" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="560" y1="0" x2="560" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="600" y1="0" x2="600" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="640" y1="0" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="0" x2="640" y2="0" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="40" x2="640" y2="40" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="80" x2="640" y2="80" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="120" x2="640" y2="120" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="160" x2="640" y2="160" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="200" x2="640" y2="200" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="240" x2="640" y2="240" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="280" x2="640" y2="280" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="320" x2="640" y2="320" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="360" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="80" y1="280" x2="560" y2="80" stroke="rgba(255,255,255,0.35)"/><line x1="120" y1="260" x2="420" y2="80" stroke="#fff" stroke-width="1.5"/><line x1="120" y1="260" x2="300" y2="120" stroke="#fff" stroke-width="1.5"/><line x1="300" y1="120" x2="420" y2="80" stroke="rgba(255,255,255,0.7)" stroke-dasharray="4 4"/><circle cx="300" cy="120" r="4" fill="#fff"/><text x="430" y="78" fill="#bbb" font-size="13" font-family="Georgia, serif">projection</text></svg>
+<figcaption>The error is perpendicular to the line. That sentence is the projection theorem.</figcaption>
+</figure>
+</section>
+<section id="sets">
+<h2>Escalating sets</h2>
+<p>Five sets. Finish a set before you touch the next. Full sentences, not a circled answer.</p>
+<h3>Set 1. Subspaces</h3><ol><li>Which of the standard subsets of \(\mathbb{R}^3\) are subspaces: planes through the origin, planes not through the origin, the set where \(x_1x_2=0\)?</li><li>Prove that the intersection of two subspaces is a subspace, and that the union need not be.</li><li>Find a basis of the solution set of \(x+y+z=0\).</li><li>Extend \(\{(1,1,0),(1,0,1)\}\) to a basis of \(\mathbb{R}^3\).</li><li>State rank–nullity for a \(3\times 5\) matrix of rank 3. What is the dimension of the nullspace?</li></ol><h3>Set 2. Maps and matrices</h3><ol><li>Write the matrix of rotation by \(90^\circ\) in \(\mathbb{R}^2\) and compute its square.</li><li>Prove that matrix multiplication corresponds to composition of the associated maps.</li><li>Compute the determinant in the attack, and the inverse if it exists.</li><li>Show that a square matrix is invertible if and only if 0 is not an eigenvalue.</li><li>Give a \(2\times 2\) matrix that is not diagonalizable. Check the geometric multiplicity.</li></ol><h3>Set 3. Inner products</h3><ol><li>Apply Gram–Schmidt to \((1,1,0)\) and \((1,0,1)\).</li><li>Prove that an orthonormal set is linearly independent.</li><li>Derive the normal equation for least squares: \(A^{T}A\hat x=A^{T}b\).</li><li>Show that a real symmetric \(2\times 2\) matrix has real eigenvalues.</li><li>Project \((1,2,2)\) onto the span of \((1,0,0)\) and \((0,1,0)\).</li></ol><h3>Set 4. Structure</h3><ol><li>Prove rank–nullity.</li><li>Prove that eigenvectors for distinct eigenvalues are independent.</li><li>State the spectral theorem for real symmetric matrices and prove the \(2\times 2\) case.</li><li>For \(A=\begin{pmatrix}1&1\\0&2\end{pmatrix}\), find eigenvalues and decide diagonalizability.</li><li>Explain SVD in one paragraph without using the words “just a factorization.”</li></ol><h3>Set 5. Ceiling</h3><ol><li>One 18.06 exam, timed.</li><li>Five Borisov linear-algebra Putnam problems.</li><li>Ten Axler exercises from the chapters on operators.</li><li>Two Matoušek miniatures, written.</li><li>Blank-page proof of rank–nullity.</li></ol>
+</section>
+<section id="bank">
+<h2>Return bank</h2>
+<p>Ten problems to meet again. Logging a writeup schedules them at 1 day, 7 days, and 30 days in this browser.</p>
+<ul id="due-list" class="clean"></ul>
+<ol>
+<li class="bank-item" data-bank-id="linear-algebra-b1" data-bank-label="Why \((1,2)\) and \((2,4)\) are not a basis.">Why \((1,2)\) and \((2,4)\) are not a basis. <button type="button" data-log-review="linear-algebra-b1">Log a writeup</button></li><li class="bank-item" data-bank-id="linear-algebra-b2" data-bank-label="Determinant and orientation of \(\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}\).">Determinant and orientation of \(\begin{pmatrix}1&2\\3&4\end{pmatrix}\). <button type="button" data-log-review="linear-algebra-b2">Log a writeup</button></li><li class="bank-item" data-bank-id="linear-algebra-b3" data-bank-label="Rank–nullity proof.">Rank–nullity proof. <button type="button" data-log-review="linear-algebra-b3">Log a writeup</button></li><li class="bank-item" data-bank-id="linear-algebra-b4" data-bank-label="Rotation by \(90^\circ\), squared.">Rotation by \(90^\circ\), squared. <button type="button" data-log-review="linear-algebra-b4">Log a writeup</button></li><li class="bank-item" data-bank-id="linear-algebra-b5" data-bank-label="A non-diagonalizable \(2\times 2\).">A non-diagonalizable \(2\times 2\). <button type="button" data-log-review="linear-algebra-b5">Log a writeup</button></li><li class="bank-item" data-bank-id="linear-algebra-b6" data-bank-label="Gram–Schmidt on two vectors in \(\mathbb{R}^3\).">Gram–Schmidt on two vectors in \(\mathbb{R}^3\). <button type="button" data-log-review="linear-algebra-b6">Log a writeup</button></li><li class="bank-item" data-bank-id="linear-algebra-b7" data-bank-label="Least-squares normal equation.">Least-squares normal equation. <button type="button" data-log-review="linear-algebra-b7">Log a writeup</button></li><li class="bank-item" data-bank-id="linear-algebra-b8" data-bank-label="Spectral theorem, \(2\times 2\) case.">Spectral theorem, \(2\times 2\) case. <button type="button" data-log-review="linear-algebra-b8">Log a writeup</button></li><li class="bank-item" data-bank-id="linear-algebra-b9" data-bank-label="SVD in terms of \(A^{T}A\).">SVD in terms of \(A^{T}A\). <button type="button" data-log-review="linear-algebra-b9">Log a writeup</button></li><li class="bank-item" data-bank-id="linear-algebra-b10" data-bank-label="One missed 18.06 exam problem.">One missed 18.06 exam problem. <button type="button" data-log-review="linear-algebra-b10">Log a writeup</button></li>
+</ol>
+</section>
+<section id="oral">
+<h2>Oral pass</h2>
+<p>Define a basis, prove rank–nullity, and explain what an eigenvalue is in terms of a line the map preserves. No notes.</p>
+<p><label><input type="checkbox" data-slug="linear-algebra" data-stage="oral"> I explained this from a blank page, out loud, with no notes.</label></p>
+</section>
+<div class="pager"><a href="../topics/calc-1.html">← Single-Variable Calculus</a><a href="../topics/calc-3.html">Multivariable and Vector Calculus →</a></div>
+
+<footer class="colophon">Black page, white type. Progress stays in this browser. No account, no analytics.</footer>
+</div>
+</body>
+</html>

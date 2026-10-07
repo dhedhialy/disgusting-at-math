@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Precalculus, competition-hard</title>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script defer src="../js/curriculum.js"></script>
+<script defer src="../js/grades.js"></script>
+<script defer src="../js/site.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  }
+});
+</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav"><a class="brand" href="../index.html">Disgusting at Math</a><a href="../index.html">Map</a><a href="../method.html">Method</a><a href="../resources.html">Resources</a><a href="../progress.html">Progress</a></nav>
+
+<p class="kicker">Math · 02</p>
+<h1>Precalculus, competition-hard</h1>
+<div class="pager"><a href="../topics/ap-precalc.html">← AP Precalculus</a><a href="../topics/proof-logic.html">Proof and Logic →</a></div>
+
+<nav class="toc" aria-label="On this page">
+<p class="kicker">On this page</p>
+<ol>
+<li><a href="#attack">Problems first</a></li>
+<li><a href="#prereqs">Prerequisites</a></li>
+<li><a href="#what">What this actually is</a></li>
+<li><a href="#core">Core results</a></li>
+<li><a href="#ladder">The ladder</a></li>
+<li><a href="#hardest">Hardest questions</a></li>
+<li><a href="#gate">Mastery gate</a></li>
+<li><a href="#diagrams">Diagrams</a></li>
+<li><a href="#sets">Escalating sets</a></li>
+<li><a href="#bank">Return bank</a></li>
+<li><a href="#oral">Oral pass</a></li>
+</ol>
+</nav>
+
+<section id="attack">
+<h2>Problems first</h2>
+<p>Attempt these before you open a book or a video. Write the argument in the work box and the conclusion in the answer box. Check counts the problem only when both pass, and it does not open the solution. The solution stays locked for twenty minutes after you start the timer.</p>
+
+<article class="attack">
+<p class="kicker">Attack 1</p>
+<p>Solve \(\log_2 x+\log_x 2=5/2\).</p>
+<form class="grade" data-grade="precalc-hardening-a1">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="precalc-hardening-a1">Check work and answer</button></p>
+<p class="verdict" data-verdict="precalc-hardening-a1"></p>
+</form>
+<p><button type="button" data-start="precalc-hardening-a1">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="precalc-hardening-a1">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="precalc-hardening-a1" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-precalc-hardening-a1" hidden><p>Let \(t=\log_2 x\), so \(t\ne 0\) and \(x>0\), \(x\ne 1\). Then \(t+1/t=5/2\). Multiply by \(2t\): \(2t^2-5t+2=0\), \((2t-1)(t-2)=0\). So \(t=1/2\) or \(t=2\), hence \(x=\sqrt{2}\) or \(x=4\). Both check.</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 2</p>
+<p>How many real roots does \(x^5-5x+1=0\) have? Do not approximate them. Count them.</p>
+<form class="grade" data-grade="precalc-hardening-a2">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="precalc-hardening-a2">Check work and answer</button></p>
+<p class="verdict" data-verdict="precalc-hardening-a2"></p>
+</form>
+<p><button type="button" data-start="precalc-hardening-a2">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="precalc-hardening-a2">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="precalc-hardening-a2" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-precalc-hardening-a2" hidden><p>\(f'(x)=5x^4-5=5(x^4-1)\), so the only real critical points are \(x=\pm 1\). \(f(-1)=5>0\) is a local max and \(f(1)=-3<0\) is a local min, because \(f''\) or the first-derivative sign chart says so: \(f'\) is negative on \((-1,1)\) and positive outside. \(f(-2)<0\), \(f(2)>0\). So there is one root in \((-\infty,-1)\), one in \((-1,1)\), and one in \((1,\infty)\). Three real roots, and therefore two nonreal complex roots.</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 3</p>
+<p>Prove that for positive \(a,b\), \((a+b)/2\ge\sqrt{ab}\), and characterize equality.</p>
+<form class="grade" data-grade="precalc-hardening-a3">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="precalc-hardening-a3">Check work and answer</button></p>
+<p class="verdict" data-verdict="precalc-hardening-a3"></p>
+</form>
+<p><button type="button" data-start="precalc-hardening-a3">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="precalc-hardening-a3">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="precalc-hardening-a3" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-precalc-hardening-a3" hidden><p>\((\sqrt{a}-\sqrt{b})^2\ge 0\) expands to \(a+b\ge 2\sqrt{ab}\). Equality holds exactly when \(\sqrt{a}=\sqrt{b}\), that is \(a=b\).</p></div>
+</article>
+</section>
+<section id="prereqs">
+<h2>Prerequisites</h2>
+<ul class="clean"><li><a href="ap-precalc.html">AP Precalculus</a></li></ul>
+</section>
+<section id="what">
+<h2>What this actually is</h2>
+
+<p>This page is the same functions, trigonometry, and analytic geometry, pushed until the standard method is not enough. Competition precalculus adds complex numbers as a working tool, polynomials as objects with structure rather than expressions to factor, functional equations, inequalities with equality cases, and trigonometry used as algebra on the circle. The College Board will not ask most of this. Later analysis and olympiad calculus will assume you already paid for it.</p>
+<p>The failure mode is collecting tricks. A trick that you cannot derive is a fact you will misapply the first time the problem is rotated. Every identity on this page has to be something you can rebuild: De Moivre from multiplication of complex numbers, AM-GM from a square, the factor theorem from division. Gelfand’s short books were written exactly in this spirit. The free scans of them are access-restricted on the Internet Archive, so they are not linked here as downloads. Use the sources below, which are open.</p>
+<p>When a problem splits into cases, write the cases down before you compute. Most lost points at this level are a case that was never named.</p>
+
+</section>
+<section id="core">
+<h2>Core results</h2>
+<p>Statements only. Write the argument before you reveal it. A revealed proof you did not attempt is a paragraph you will not be able to rebuild at 2am.</p>
+<ol class="spine">
+
+<li>
+<p><strong>Complex arithmetic.</strong> \(i^2=-1\). In polar form, \(re^{i\theta}\cdot \rho e^{i\phi}=r\rho e^{i(\theta+\phi)}\). De Moivre: \((\cos\theta+i\sin\theta)^n=\cos(n\theta)+i\sin(n\theta)\). Nonreal roots of real polynomials come in conjugate pairs.</p>
+<p><button type="button" data-show-proof="proof-precalc-hardening-1">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-precalc-hardening-1" hidden><p>Multiplication adds angles because that is how \(e^{i\theta}=\cos\theta+i\sin\theta\) multiplies, or by expanding the sine and cosine addition formulas inductively. The conjugate-root theorem is the observation that conjugating \(p(z)=0\) with real coefficients yields \(p(\bar z)=0\).</p></div>
+</li>
+<li>
+<p><strong>Polynomial structure.</strong> Over \(\mathbb{C}\), a degree-\(n\) polynomial has exactly \(n\) roots, counted with multiplicity. If the coefficients are real and \(a+bi\) is a root, so is \(a-bi\). A symmetric polynomial in the roots can be written in the elementary symmetric sums, which are the coefficients up to sign.</p>
+<p><button type="button" data-show-proof="proof-precalc-hardening-2">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-precalc-hardening-2" hidden><p>The existence half is the fundamental theorem of algebra; you are not asked to prove it here, only to use the counting consequence after unique factorization in \(\mathbb{C}[x]\), which you may take as known once the theorem is stated. Vieta is equating coefficients in \(a_n\prod(x-r_i)\).</p></div>
+</li>
+<li>
+<p><strong>Inequalities.</strong> AM-GM for \(n\) positive numbers, Cauchy–Schwarz in the form \((a_1^2+\cdots+a_n^2)(b_1^2+\cdots+b_n^2)\ge(a_1b_1+\cdots+a_nb_n)^2\), and the trivial bound from squares: a sum of squares is nonnegative.</p>
+<p><button type="button" data-show-proof="proof-precalc-hardening-3">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-precalc-hardening-3" hidden><p>The \(n=2\) AM-GM is the attack above. Cauchy–Schwarz is the discriminant of \(\sum(a_i t-b_i)^2\ge 0\) being nonpositive, or the expansion of \(\sum_{i<j}(a_ib_j-a_jb_i)^2\ge 0\).</p></div>
+</li>
+<li>
+<p><strong>Trigonometric form.</strong> The linear combination \(a\cos\theta+b\sin\theta\) equals \(R\cos(\theta-\alpha)\) with \(R=\sqrt{a^2+b^2}\) and \(\cos\alpha=a/R\), \(\sin\alpha=b/R\). Product-to-sum identities are the addition formulas solved for products.</p>
+<p><button type="button" data-show-proof="proof-precalc-hardening-4">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-precalc-hardening-4" hidden><p>Divide by \(R\) and match the addition formula for cosine. Product-to-sum is the sum and difference of \(\cos(\alpha+\beta)\) and \(\cos(\alpha-\beta)\), rearranged.</p></div>
+</li>
+<li>
+<p><strong>Conics.</strong> A conic is a curve \(Ax^2+Bxy+Cy^2+Dx+Ey+F=0\). After rotation to kill the \(xy\) term and translation to complete the square, the type is ellipse, parabola, or hyperbola according to the discriminant \(B^2-4AC\).</p>
+<p><button type="button" data-show-proof="proof-precalc-hardening-5">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-precalc-hardening-5" hidden><p>The rotation by an angle satisfying \(\cot 2\theta=(A-C)/B\) removes \(xy\). Completing the square is algebra. The discriminant is invariant under rotation, which is why it classifies the conic before you compute the angle.</p></div>
+</li>
+</ol>
+</section>
+<section id="ladder">
+<h2>The ladder</h2>
+<p>Four rungs, in order. Do not skip a rung because the next one looks more serious.</p>
+<h3>Tier 0 / First contact</h3><p class="tier-label">Watch or read once. Do not study from this.</p><p class="resource"><a href="https://tutorial.math.lamar.edu/Classes/Alg/Alg.aspx">Paul’s Online Math Notes, Algebra</a><br><span class="why">Read once, do not study from this. Skim the section list so you can see which algebra moves you still hesitate on. Then close it and go to the book.</span></p><h3>Tier 1 / Main text</h3><p class="tier-label">The thing you work through.</p><p class="resource"><a href="https://stitz-zeager.com/Precalculus4.pdf">Stitz and Zeager, the complex, trig, and conic chapters you rushed</a><br><span class="why">Same free book as the previous page. The hardening is in which exercises you choose: every proof-style exercise, every complex-number section, every inequality.</span></p><h3>Tier 2 / Hard problems</h3><p class="tier-label">The problem book.</p><p class="resource"><a href="https://artofproblemsolving.com/store/book/precalculus">AoPS Precalculus, plus Alcumus on hard</a> <span class="paid">PAID</span><br><span class="why">Paid textbook aimed at contests. Paired with Alcumus: https://artofproblemsolving.com/alcumus . Better than another college precalculus book because the problems are the point.</span></p><h3>Tier 3 / The ceiling</h3><p class="tier-label">The hardest questions that exist at this level.</p><p class="resource"><a href="https://artofproblemsolving.com/wiki/index.php/AIME_Problems_and_Solutions">AIME problems and Sharygin’s plane geometry</a><br><span class="why">AIME is the ceiling for precalculus technique. Sharygin, for the coordinate slice only: https://archive.org/details/SharyginProblemsInPlaneGeometryScienceForEveryone . Gelfand’s problem books are the right spirit; legal free downloads were not verified, so they are not linked.</span></p>
+
+<ul class="checks">
+<li><label><input type="checkbox" data-slug="precalc-hardening" data-stage="contact"> Tier 0 done once, then closed.</label></li>
+<li><label><input type="checkbox" data-slug="precalc-hardening" data-stage="text"> Main text worked, exercises written.</label></li>
+<li><label><input type="checkbox" data-slug="precalc-hardening" data-stage="hard"> Hard-problem set written up.</label></li>
+<li><label><input type="checkbox" data-slug="precalc-hardening" data-stage="ceiling"> Ceiling problems attempted under the timer.</label></li>
+<li><label><input type="checkbox" data-slug="precalc-hardening" data-stage="gate"> Mastery gate passed.</label></li>
+</ul>
+
+</section>
+<section id="hardest">
+<h2>Hardest questions</h2>
+<p>Names and links. The problem text stays on the source site. Copyrighted contest problems are not copied here. What follows is where they are and why they hurt.</p>
+<ol class="spine">
+<li><a href="https://artofproblemsolving.com/wiki/index.php/AIME_Problems_and_Solutions">AIME problems 10–15 on complex numbers, trigonometry, polynomials, and inequalities</a><br><span class="why">The answer is an integer from 000 to 999, which means a structural idea, not a decimal hunt.</span></li><li><a href="https://live.poshenloh.com/">Po-Shen Loh, top difficulty, complex numbers and trig</a><br><span class="why">You can filter to the concept and stop pretending a random AMC #8 is practice.</span></li><li><a href="https://artofproblemsolving.com/wiki/index.php/AMC_12_Problems_and_Solutions">AMC 12 #21–25, several years, complex or trig tags</a><br><span class="why">Timed pressure on identities you were supposed to have made automatic.</span></li><li><a href="https://archive.org/details/SharyginProblemsInPlaneGeometryScienceForEveryone">Sharygin, coordinate and locus problems</a><br><span class="why">The diagram lies. The algebra tells the truth only if you chose coordinates that respect the symmetry.</span></li><li><a href="https://artofproblemsolving.com/alcumus">Alcumus, hardest setting, precalculus topics</a><br><span class="why">The generator will keep serving the topic you miss. That is the opposite of a highlight reel.</span></li>
+</ol>
+</section>
+<section id="gate">
+<h2>Mastery gate</h2>
+<p>Pass: eight AIME problems, numbered 8 or higher, from at least four different years, covering at least three of complex numbers, trigonometry, polynomials, and inequalities. Full writeups. You may use the contest’s answer format as a checksum only after the solution is written. Fail if you needed a solution video to find the idea.</p>
+<p><label><input type="checkbox" data-slug="precalc-hardening" data-stage="gate"> I passed this gate with written solutions.</label></p>
+</section>
+<section id="diagrams">
+<h2>Diagrams</h2>
+<figure class="diagram">
+<svg viewBox="0 0 640 360" role="img" aria-label="A quintic crossing the axis three times"><rect width="640" height="360" fill="#000"/><line x1="0" y1="0" x2="0" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="40" y1="0" x2="40" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="80" y1="0" x2="80" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="120" y1="0" x2="120" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="160" y1="0" x2="160" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="200" y1="0" x2="200" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="240" y1="0" x2="240" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="280" y1="0" x2="280" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="320" y1="0" x2="320" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="360" y1="0" x2="360" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="400" y1="0" x2="400" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="440" y1="0" x2="440" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="480" y1="0" x2="480" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="520" y1="0" x2="520" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="560" y1="0" x2="560" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="600" y1="0" x2="600" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="640" y1="0" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="0" x2="640" y2="0" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="40" x2="640" y2="40" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="80" x2="640" y2="80" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="120" x2="640" y2="120" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="160" x2="640" y2="160" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="200" x2="640" y2="200" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="240" x2="640" y2="240" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="280" x2="640" y2="280" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="320" x2="640" y2="320" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="360" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="40" y1="180" x2="600" y2="180" stroke="#fff"/><line x1="320" y1="30" x2="320" y2="330" stroke="#fff"/><path d="M80 250 C 180 280, 240 40, 320 180 S 480 80, 580 140" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="168" cy="214" r="4" fill="#fff"/><circle cx="320" cy="180" r="4" fill="#fff"/><circle cx="470" cy="128" r="4" fill="#fff"/><text x="150" y="206" fill="#bbb" font-size="13" font-family="Georgia, serif">local max</text><text x="430" y="118" fill="#bbb" font-size="13" font-family="Georgia, serif">local min</text></svg>
+<figcaption>Critical points tell you how many times a polynomial can cross the axis. They do not find the roots.</figcaption>
+</figure>
+</section>
+<section id="sets">
+<h2>Escalating sets</h2>
+<p>Five sets. Finish a set before you touch the next. Full sentences, not a circled answer.</p>
+<h3>Set 1. Complex</h3><ol><li>Write \((1+i)^{10}\) in the form \(a+bi\) using polar form.</li><li>Find all cube roots of \(8i\).</li><li>Show that if \(z\bar z=1\) and \(z\ne 1\), then \((z+1)/(z-1)\) is purely imaginary. State the exception carefully.</li><li>Factor \(x^2+1\) over the complexes and over the reals.</li><li>Prove the conjugate root theorem for a quadratic, by hand.</li></ol><h3>Set 2. Inequalities</h3><ol><li>Prove Cauchy–Schwarz for two pairs of real numbers.</li><li>For positive \(x\), minimize \(x+4/x\).</li><li>Show \(|a+b|\le |a|+|b|\) from squares or from geometry. Equality case.</li><li>Solve \(|x-1|+|x+2|<6\).</li><li>Prove \(a^2+b^2+c^2\ge ab+bc+ca\).</li></ol><h3>Set 3. Trigonometry as algebra</h3><ol><li>Write \(3\cos\theta+4\sin\theta\) as a single cosine and find its maximum.</li><li>Solve \(\sin\theta\cos\theta=1/4\) exactly.</li><li>Prove \(\tan(\alpha+\beta)\) from sine and cosine addition, and name where it is undefined.</li><li>Find \(\sum_{k=1}^{n}\sin k\theta\) by taking the imaginary part of a geometric series.</li><li>A triangle has sides 2, 3, 4. Find the cosine of the angle opposite 4. Is the angle acute?</li></ol><h3>Set 4. Polynomials and functions</h3><ol><li>How many real roots does \(x^5-5x+1\) have? Write the derivative argument.</li><li>Solve \(f(x)+f(1/x)=x+1/x\) given that you may assume a form, then check it. Better: find all functions \(\mathbb{R}\setminus\{0\}\to\mathbb{R}\) of the form \(ax+b/x\) that work, and say what you did not classify.</li><li>Vieta: the roots of \(x^3-6x^2+11x-6=0\) are 1, 2, 3. Compute the sum of pairwise products without multiplying them, from the coefficients.</li><li>Show that \(x^2+x+1\) divides \(x^3-1\) and also \(x^6+x^3+1\) or decide which of those is true.</li><li>A monic cubic with real coefficients has roots \(2\), \(i\), and one more. Find it.</li></ol><h3>Set 5. Ceiling</h3><ol><li>Four AIME problems, number at least 10.</li><li>Four AMC 12 problems, number at least 20, on this page’s topics.</li><li>Five Sharygin coordinate problems.</li><li>Derive De Moivre by induction from the addition formulas.</li><li>Ten Alcumus problems at the top setting. Keep the writeups that took more than ten minutes.</li></ol>
+</section>
+<section id="bank">
+<h2>Return bank</h2>
+<p>Ten problems to meet again. Logging a writeup schedules them at 1 day, 7 days, and 30 days in this browser.</p>
+<ul id="due-list" class="clean"></ul>
+<ol>
+<li class="bank-item" data-bank-id="precalc-hardening-b1" data-bank-label="\(\log_2 x+\log_x 2=5/2\).">\(\log_2 x+\log_x 2=5/2\). <button type="button" data-log-review="precalc-hardening-b1">Log a writeup</button></li><li class="bank-item" data-bank-id="precalc-hardening-b2" data-bank-label="Root count for \(x^5-5x+1\).">Root count for \(x^5-5x+1\). <button type="button" data-log-review="precalc-hardening-b2">Log a writeup</button></li><li class="bank-item" data-bank-id="precalc-hardening-b3" data-bank-label="AM-GM for two numbers, equality case.">AM-GM for two numbers, equality case. <button type="button" data-log-review="precalc-hardening-b3">Log a writeup</button></li><li class="bank-item" data-bank-id="precalc-hardening-b4" data-bank-label="\((1+i)^{10}\).">\((1+i)^{10}\). <button type="button" data-log-review="precalc-hardening-b4">Log a writeup</button></li><li class="bank-item" data-bank-id="precalc-hardening-b5" data-bank-label="Cube roots of \(8i\).">Cube roots of \(8i\). <button type="button" data-log-review="precalc-hardening-b5">Log a writeup</button></li><li class="bank-item" data-bank-id="precalc-hardening-b6" data-bank-label="Maximum of \(3\cos\theta+4\sin\theta\).">Maximum of \(3\cos\theta+4\sin\theta\). <button type="button" data-log-review="precalc-hardening-b6">Log a writeup</button></li><li class="bank-item" data-bank-id="precalc-hardening-b7" data-bank-label="Cauchy–Schwarz for \(n=2\).">Cauchy–Schwarz for \(n=2\). <button type="button" data-log-review="precalc-hardening-b7">Log a writeup</button></li><li class="bank-item" data-bank-id="precalc-hardening-b8" data-bank-label="Conjugate root theorem, quadratic case.">Conjugate root theorem, quadratic case. <button type="button" data-log-review="precalc-hardening-b8">Log a writeup</button></li><li class="bank-item" data-bank-id="precalc-hardening-b9" data-bank-label="One AIME #13 on complex numbers or trig.">One AIME #13 on complex numbers or trig. <button type="button" data-log-review="precalc-hardening-b9">Log a writeup</button></li><li class="bank-item" data-bank-id="precalc-hardening-b10" data-bank-label="Sum of \(\sin k\theta\) via geometric series.">Sum of \(\sin k\theta\) via geometric series. <button type="button" data-log-review="precalc-hardening-b10">Log a writeup</button></li>
+</ol>
+</section>
+<section id="oral">
+<h2>Oral pass</h2>
+<p>Explain polar form, prove AM-GM for two numbers, and count the real roots of a quintic using only the derivative sign chart. No notes.</p>
+<p><label><input type="checkbox" data-slug="precalc-hardening" data-stage="oral"> I explained this from a blank page, out loud, with no notes.</label></p>
+</section>
+<div class="pager"><a href="../topics/ap-precalc.html">← AP Precalculus</a><a href="../topics/proof-logic.html">Proof and Logic →</a></div>
+
+<footer class="colophon">Black page, white type. Progress stays in this browser. No account, no analytics.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mechanics</title>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script defer src="../js/curriculum.js"></script>
+<script defer src="../js/grades.js"></script>
+<script defer src="../js/site.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  }
+});
+</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav"><a class="brand" href="../index.html">Disgusting at Math</a><a href="../index.html">Map</a><a href="../method.html">Method</a><a href="../resources.html">Resources</a><a href="../progress.html">Progress</a></nav>
+
+<p class="kicker">Physics · 16</p>
+<h1>Mechanics</h1>
+<div class="pager"><a href="../topics/combinatorics.html">← Combinatorics</a><a href="../topics/em.html">Electricity and Magnetism →</a></div>
+
+<nav class="toc" aria-label="On this page">
+<p class="kicker">On this page</p>
+<ol>
+<li><a href="#attack">Problems first</a></li>
+<li><a href="#prereqs">Prerequisites</a></li>
+<li><a href="#what">What this actually is</a></li>
+<li><a href="#core">Core results</a></li>
+<li><a href="#ladder">The ladder</a></li>
+<li><a href="#hardest">Hardest questions</a></li>
+<li><a href="#gate">Mastery gate</a></li>
+<li><a href="#diagrams">Diagrams</a></li>
+<li><a href="#sets">Escalating sets</a></li>
+<li><a href="#bank">Return bank</a></li>
+<li><a href="#oral">Oral pass</a></li>
+</ol>
+</nav>
+
+<section id="attack">
+<h2>Problems first</h2>
+<p>Attempt these before you open a book or a video. Write the argument in the work box and the conclusion in the answer box. Check counts the problem only when both pass, and it does not open the solution. The solution stays locked for twenty minutes after you start the timer.</p>
+
+<article class="attack">
+<p class="kicker">Attack 1</p>
+<p>A block slides down a frictionless incline of angle \(\theta\). Find its acceleration along the incline.</p>
+<form class="grade" data-grade="mechanics-a1">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="mechanics-a1">Check work and answer</button></p>
+<p class="verdict" data-verdict="mechanics-a1"></p>
+</form>
+<p><button type="button" data-start="mechanics-a1">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="mechanics-a1">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="mechanics-a1" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-mechanics-a1" hidden><p>The forces are gravity and the normal. Along the incline, the component of weight is \(mg\sin\theta\) and the normal does no work along that direction. Newton’s second law gives \(a=g\sin\theta\) down the incline.</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 2</p>
+<p>Atwood’s machine: masses \(m_1>m_2\) over a massless frictionless pulley. Find the acceleration.</p>
+<form class="grade" data-grade="mechanics-a2">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="mechanics-a2">Check work and answer</button></p>
+<p class="verdict" data-verdict="mechanics-a2"></p>
+</form>
+<p><button type="button" data-start="mechanics-a2">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="mechanics-a2">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="mechanics-a2" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-mechanics-a2" hidden><p>Equations: \(m_1 g-T=m_1 a\), \(T-m_2 g=m_2 a\). Add them: \((m_1-m_2)g=(m_1+m_2)a\), so \(a=(m_1-m_2)g/(m_1+m_2)\).</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 3</p>
+<p>A projectile is launched with speed \(v\) at angle \(\theta\) from level ground. Show the trajectory is a parabola and that the range is maximized at \(45^\circ\).</p>
+<form class="grade" data-grade="mechanics-a3">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="mechanics-a3">Check work and answer</button></p>
+<p class="verdict" data-verdict="mechanics-a3"></p>
+</form>
+<p><button type="button" data-start="mechanics-a3">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="mechanics-a3">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="mechanics-a3" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-mechanics-a3" hidden><p>\(x=v\cos\theta\, t\), \(y=v\sin\theta\, t-\tfrac12 gt^2\). Eliminate \(t\): \(y=x\tan\theta-gx^2/(2v^2\cos^2\theta)\), a parabola. Range is the positive \(x\) when \(y=0\): \(R=v^2\sin 2\theta/g\), maximized when \(\sin 2\theta=1\), so \(\theta=45^\circ\).</p></div>
+</article>
+</section>
+<section id="prereqs">
+<h2>Prerequisites</h2>
+<ul class="clean"><li><a href="ap-precalc.html">AP Precalculus</a></li><li><a href="calc-1.html">Single-Variable Calculus</a></li></ul>
+</section>
+<section id="what">
+<h2>What this actually is</h2>
+
+<p>Newtonian mechanics is the claim that a force changes momentum, together with the models of the forces you actually meet: gravity near the earth, gravity between point masses, springs, and friction. The subject becomes mathematics the moment you write \(\mathbf F=d\mathbf p/dt\) as a differential equation. Energy and momentum are not extra laws. They are the consequences of Newton’s laws when the forces are what they are: momentum is conserved when the total external force vanishes, and mechanical energy is conserved when the forces are gradients of a potential.</p>
+<p>OpenStax University Physics Volume 1 is free, calculus-based, and the working book. Halliday, Resnick, and Walker is the traditional paid text; no edition was verified. Kleppner and Kolenkow, and Morin’s Introduction to Classical Mechanics (ISBN 978-0-521-87622-3), are the harder books. Morin’s ISBN was confirmed in the Open Library catalog. MIT 8.01 is the course with exams. Irodov is the ceiling. Feynman is the preview, and Feynman is a bad place to learn to solve problems.</p>
+<p>A free-body diagram that does not name the body is a decoration. Draw the body, then the arrows that act on it, then the equation.</p>
+
+</section>
+<section id="core">
+<h2>Core results</h2>
+<p>Statements only. Write the argument before you reveal it. A revealed proof you did not attempt is a paragraph you will not be able to rebuild at 2am.</p>
+<ol class="spine">
+
+<li>
+<p><strong>Newton.</strong> In an inertial frame, \(\mathbf F_{\mathrm{net}}=d\mathbf p/dt\). For constant mass this is \(m\mathbf a\). Superposition: the net force is the vector sum. The third law, in the form of equal-and-opposite central forces, is what makes internal forces cancel in the momentum balance of a system.</p>
+<p><button type="button" data-show-proof="proof-mechanics-1">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-mechanics-1" hidden><p>These are the laws, not theorems. The derived statement you must prove is the momentum theorem: the total external force equals the derivative of total momentum, once internal forces cancel by the third law.</p></div>
+</li>
+<li>
+<p><strong>Energy.</strong> The work–energy theorem: the work of the net force equals the change in kinetic energy. If every force is conservative, mechanical energy is conserved. Gravity near Earth has potential \(mgy\). A spring has potential \(\tfrac12 kx^2\).</p>
+<p><button type="button" data-show-proof="proof-mechanics-2">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-mechanics-2" hidden><p>Work–energy is the chain rule: \(\mathbf F\cdot\mathbf v=m\mathbf a\cdot\mathbf v=\frac{d}{dt}(\tfrac12 mv^2)\). A conservative force is minus the gradient of a potential, so its work is minus the change in potential.</p></div>
+</li>
+<li>
+<p><strong>Momentum and rotation.</strong> External impulse equals change in momentum. For a rigid body about a fixed axis, \(\tau=I\alpha\), and \(I\) depends on the axis by the parallel-axis theorem. Angular momentum about a point fixed in an inertial frame, or the center of mass, satisfies \(\boldsymbol\tau=d\mathbf L/dt\) under the usual hypotheses.</p>
+<p><button type="button" data-show-proof="proof-mechanics-3">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-mechanics-3" hidden><p>The rotational law for a particle is \(\mathbf r\times\mathbf F=d(\mathbf r\times\mathbf p)/dt\) because \(\mathbf v\times\mathbf p=0\). Sum over particles. The parallel-axis theorem is the expansion of \(\int |\mathbf r-\mathbf r_{\mathrm{cm}}+\mathbf d|^2 dm\).</p></div>
+</li>
+<li>
+<p><strong>Orbits.</strong> An inverse-square central force conserves angular momentum and energy, and the orbit is a conic. For gravity, closed orbits are ellipses with the center of force at a focus.</p>
+<p><button type="button" data-show-proof="proof-mechanics-4">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-mechanics-4" hidden><p>Angular momentum conservation is the torque of a central force vanishing. The orbit equation comes from the substitution \(u=1/r\) in the radial equation. The conic section is the solution of that linear oscillator equation for \(u(\theta)\).</p></div>
+</li>
+<li>
+<p><strong>Oscillations.</strong> \(m\ddot x=-kx\) has solutions of period \(2\pi\sqrt{m/k}\). Small oscillations about a stable equilibrium are harmonic, with \(k\) equal to the second derivative of the potential at the minimum. Damping and driving add the standard linear terms.</p>
+<p><button type="button" data-show-proof="proof-mechanics-5">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-mechanics-5" hidden><p>The characteristic equation \(r^2+\omega^2=0\) gives the period. The small-oscillation claim is Taylor expansion of the potential to second order; the linear term vanishes at an equilibrium.</p></div>
+</li>
+</ol>
+</section>
+<section id="ladder">
+<h2>The ladder</h2>
+<p>Four rungs, in order. Do not skip a rung because the next one looks more serious.</p>
+<h3>Tier 0 / First contact</h3><p class="tier-label">Watch or read once. Do not study from this.</p><p class="resource"><a href="https://www.feynmanlectures.caltech.edu/">The Feynman Lectures on Physics, Volume I, opened from the official site</a><br><span class="why">Read once, do not study from this. Read the table of contents of Volume I and one lecture if you want the voice. Feynman will not teach you to finish Irodov. Close it.</span></p><h3>Tier 1 / Main text</h3><p class="tier-label">The thing you work through.</p><p class="resource"><a href="https://openstax.org/details/books/university-physics-volume-1">OpenStax University Physics Volume 1, and MIT 8.01SC</a><br><span class="why">Free calculus-based text. The course with exams is https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/ . Halliday is the paid traditional book; no edition was verified. OpenStax plus 8.01 is the better pair because you can start tonight and sit a real exam.</span></p><h3>Tier 2 / Hard problems</h3><p class="tier-label">The problem book.</p><p class="resource"><a href="https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/">Morin, Introduction to Classical Mechanics, ISBN 978-0-521-87622-3, and Kleppner &amp; Kolenkow</a><br><span class="why">Both books are paid. Morin’s ISBN was catalogued. Kleppner’s ISBN was not, so it is unnamed. The link is 8.01’s problem sets, which are the hard layer you can do before you buy either book.</span></p><h3>Tier 3 / The ceiling</h3><p class="tier-label">The hardest questions that exist at this level.</p><p class="resource"><a href="https://archive.org/details/IrodovProblemsInGeneralPhysics">Irodov, Problems in General Physics, and Krotov</a><br><span class="why">Irodov is the ceiling. Krotov’s Aptitude Test Problems in Physics is the olympiad companion: https://archive.org/details/ptitudetestproblemsinphysics . Use the mechanics parts. The answers in the back of Irodov are a check after the writeup.</span></p>
+
+<ul class="checks">
+<li><label><input type="checkbox" data-slug="mechanics" data-stage="contact"> Tier 0 done once, then closed.</label></li>
+<li><label><input type="checkbox" data-slug="mechanics" data-stage="text"> Main text worked, exercises written.</label></li>
+<li><label><input type="checkbox" data-slug="mechanics" data-stage="hard"> Hard-problem set written up.</label></li>
+<li><label><input type="checkbox" data-slug="mechanics" data-stage="ceiling"> Ceiling problems attempted under the timer.</label></li>
+<li><label><input type="checkbox" data-slug="mechanics" data-stage="gate"> Mastery gate passed.</label></li>
+</ul>
+
+</section>
+<section id="hardest">
+<h2>Hardest questions</h2>
+<p>Names and links. The problem text stays on the source site. Copyrighted contest problems are not copied here. What follows is where they are and why they hurt.</p>
+<ol class="spine">
+<li><a href="https://archive.org/details/IrodovProblemsInGeneralPhysics">Irodov, the mechanics problems, in order, especially the later ones in each section</a><br><span class="why">The early items are drills. The later items add a constraint, a noninertial frame, or an energy argument you must notice.</span></li><li><a href="https://archive.org/details/ptitudetestproblemsinphysics">Krotov, mechanics</a><br><span class="why">Olympiad flavor: the setup is the problem, and the physics is short once you see it.</span></li><li><a href="https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/">MIT 8.01 exams</a><br><span class="why">Timed, with free-body diagrams that are part of the grade.</span></li><li><a href="https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/">Morin, the problems on oscillations and central forces</a><br><span class="why">Morin is paid and unlinked as a file. These 8.01 topics are the public stand-in. Morin’s problems are hard because they ask for a clever frame or a conserved quantity.</span></li><li><a href="https://openstax.org/details/books/university-physics-volume-1">Derive the range formula and the 45° result from Newton’s laws</a><br><span class="why">If this is not clean, Irodov will be misery for no good reason.</span></li>
+</ol>
+</section>
+<section id="gate">
+<h2>Mastery gate</h2>
+<p>Pass: one 8.01 exam, timed, plus ten Irodov mechanics problems with free-body diagrams and a sentence naming the conserved quantity if there is one. Fail if a solution uses a formula you cannot derive from \(\mathbf F=m\mathbf a\) in one line.</p>
+<p><label><input type="checkbox" data-slug="mechanics" data-stage="gate"> I passed this gate with written solutions.</label></p>
+</section>
+<section id="diagrams">
+<h2>Diagrams</h2>
+<figure class="diagram">
+<svg viewBox="0 0 640 360" role="img" aria-label="A block on an incline with weight drawn straight down"><rect width="640" height="360" fill="#000"/><line x1="0" y1="0" x2="0" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="40" y1="0" x2="40" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="80" y1="0" x2="80" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="120" y1="0" x2="120" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="160" y1="0" x2="160" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="200" y1="0" x2="200" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="240" y1="0" x2="240" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="280" y1="0" x2="280" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="320" y1="0" x2="320" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="360" y1="0" x2="360" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="400" y1="0" x2="400" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="440" y1="0" x2="440" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="480" y1="0" x2="480" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="520" y1="0" x2="520" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="560" y1="0" x2="560" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="600" y1="0" x2="600" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="640" y1="0" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="0" x2="640" y2="0" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="40" x2="640" y2="40" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="80" x2="640" y2="80" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="120" x2="640" y2="120" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="160" x2="640" y2="160" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="200" x2="640" y2="200" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="240" x2="640" y2="240" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="280" x2="640" y2="280" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="320" x2="640" y2="320" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="360" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><polygon points="80,280 520,280 520,80" fill="none" stroke="#fff"/><rect x="300" y="150" width="70" height="40" fill="#000" stroke="#fff" transform="rotate(-22 335 170)"/><line x1="330" y1="160" x2="330" y2="80" stroke="#fff"/><text x="338" y="100" fill="#bbb" font-size="13" font-family="Georgia, serif">mg</text><text x="250" y="200" fill="#bbb" font-size="13" font-family="Georgia, serif">normal</text></svg>
+<figcaption>Weight is vertical. The axes you compute in are along the incline. Do not mix them.</figcaption>
+</figure>
+</section>
+<section id="sets">
+<h2>Escalating sets</h2>
+<p>Five sets. Finish a set before you touch the next. Full sentences, not a circled answer.</p>
+<h3>Set 1. Newton</h3><ol><li>Incline, frictionless.</li><li>Incline with friction \(\mu\), find the acceleration and the condition for sliding.</li><li>Atwood machine.</li><li>Two blocks in contact, a force on the first. Find the contact force.</li><li>A mass on a string in a horizontal circle. Tension.</li></ol><h3>Set 2. Energy and momentum</h3><ol><li>Prove the work–energy theorem in one dimension.</li><li>A spring launches a mass. Find the speed.</li><li>Elastic collision in one dimension, equal masses.</li><li>Inelastic collision, the combined speed.</li><li>Ballistic pendulum: combine the two conservation laws and say which applies to which stage.</li></ol><h3>Set 3. Rotation</h3><ol><li>Parallel-axis theorem for a point mass.</li><li>A pulley of nonzero moment of inertia in an Atwood machine. Write the equations. You need \(\tau=I\alpha\).</li><li>Rolling without slipping: \(v=\omega R\). Where does it come from?</li><li>Angular momentum of a particle, \(\mathbf r\times\mathbf p\).</li><li>A force through the center of mass does not torque about the center of mass. Prove it.</li></ol><h3>Set 4. Orbits and oscillators</h3><ol><li>Period of a spring.</li><li>Physical pendulum, small angles, period \(2\pi\sqrt{I/mgd}\). Derive it.</li><li>Circular orbit speed for gravity, from \(GMm/r^2=mv^2/r\).</li><li>Escape speed.</li><li>Projectile range, the attack, written cleanly.</li></ol><h3>Set 5. Ceiling</h3><ol><li>Ten Irodov mechanics problems.</li><li>Three Krotov problems.</li><li>One 8.01 exam.</li><li>Derive Kepler’s equal-area law from angular momentum.</li><li>Oral free-body diagram of the incline.</li></ol>
+</section>
+<section id="bank">
+<h2>Return bank</h2>
+<p>Ten problems to meet again. Logging a writeup schedules them at 1 day, 7 days, and 30 days in this browser.</p>
+<ul id="due-list" class="clean"></ul>
+<ol>
+<li class="bank-item" data-bank-id="mechanics-b1" data-bank-label="Frictionless incline.">Frictionless incline. <button type="button" data-log-review="mechanics-b1">Log a writeup</button></li><li class="bank-item" data-bank-id="mechanics-b2" data-bank-label="Atwood.">Atwood. <button type="button" data-log-review="mechanics-b2">Log a writeup</button></li><li class="bank-item" data-bank-id="mechanics-b3" data-bank-label="Projectile range at 45°.">Projectile range at 45°. <button type="button" data-log-review="mechanics-b3">Log a writeup</button></li><li class="bank-item" data-bank-id="mechanics-b4" data-bank-label="Work–energy theorem.">Work–energy theorem. <button type="button" data-log-review="mechanics-b4">Log a writeup</button></li><li class="bank-item" data-bank-id="mechanics-b5" data-bank-label="Ballistic pendulum.">Ballistic pendulum. <button type="button" data-log-review="mechanics-b5">Log a writeup</button></li><li class="bank-item" data-bank-id="mechanics-b6" data-bank-label="Spring period.">Spring period. <button type="button" data-log-review="mechanics-b6">Log a writeup</button></li><li class="bank-item" data-bank-id="mechanics-b7" data-bank-label="Escape speed.">Escape speed. <button type="button" data-log-review="mechanics-b7">Log a writeup</button></li><li class="bank-item" data-bank-id="mechanics-b8" data-bank-label="Rolling condition \(v=\omega R\).">Rolling condition \(v=\omega R\). <button type="button" data-log-review="mechanics-b8">Log a writeup</button></li><li class="bank-item" data-bank-id="mechanics-b9" data-bank-label="One Irodov problem that took over an hour.">One Irodov problem that took over an hour. <button type="button" data-log-review="mechanics-b9">Log a writeup</button></li><li class="bank-item" data-bank-id="mechanics-b10" data-bank-label="Kepler equal areas.">Kepler equal areas. <button type="button" data-log-review="mechanics-b10">Log a writeup</button></li>
+</ol>
+</section>
+<section id="oral">
+<h2>Oral pass</h2>
+<p>State Newton’s second law, derive the incline acceleration, and explain when mechanical energy is conserved. No notes.</p>
+<p><label><input type="checkbox" data-slug="mechanics" data-stage="oral"> I explained this from a blank page, out loud, with no notes.</label></p>
+</section>
+<div class="pager"><a href="../topics/combinatorics.html">← Combinatorics</a><a href="../topics/em.html">Electricity and Magnetism →</a></div>
+
+<footer class="colophon">Black page, white type. Progress stays in this browser. No account, no analytics.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abstract Algebra</title>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script defer src="../js/curriculum.js"></script>
+<script defer src="../js/grades.js"></script>
+<script defer src="../js/site.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  }
+});
+</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav"><a class="brand" href="../index.html">Disgusting at Math</a><a href="../index.html">Map</a><a href="../method.html">Method</a><a href="../resources.html">Resources</a><a href="../progress.html">Progress</a></nav>
+
+<p class="kicker">Math · 10</p>
+<h1>Abstract Algebra</h1>
+<div class="pager"><a href="../topics/topology.html">← Topology</a><a href="../topics/complex-analysis.html">Complex Analysis →</a></div>
+
+<nav class="toc" aria-label="On this page">
+<p class="kicker">On this page</p>
+<ol>
+<li><a href="#attack">Problems first</a></li>
+<li><a href="#prereqs">Prerequisites</a></li>
+<li><a href="#what">What this actually is</a></li>
+<li><a href="#core">Core results</a></li>
+<li><a href="#ladder">The ladder</a></li>
+<li><a href="#hardest">Hardest questions</a></li>
+<li><a href="#gate">Mastery gate</a></li>
+<li><a href="#diagrams">Diagrams</a></li>
+<li><a href="#sets">Escalating sets</a></li>
+<li><a href="#bank">Return bank</a></li>
+<li><a href="#oral">Oral pass</a></li>
+</ol>
+</nav>
+
+<section id="attack">
+<h2>Problems first</h2>
+<p>Attempt these before you open a book or a video. Write the argument in the work box and the conclusion in the answer box. Check counts the problem only when both pass, and it does not open the solution. The solution stays locked for twenty minutes after you start the timer.</p>
+
+<article class="attack">
+<p class="kicker">Attack 1</p>
+<p>Is the set of nonzero reals under multiplication a group? What is the identity, and what is the inverse of \(-2\)?</p>
+<form class="grade" data-grade="abstract-algebra-a1">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="abstract-algebra-a1">Check work and answer</button></p>
+<p class="verdict" data-verdict="abstract-algebra-a1"></p>
+</form>
+<p><button type="button" data-start="abstract-algebra-a1">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="abstract-algebra-a1">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="abstract-algebra-a1" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-abstract-algebra-a1" hidden><p>Yes. The identity is \(1\). The inverse of \(-2\) is \(-1/2\), because their product is 1. Closure, associativity, identity, and inverses all hold. Zero is excluded because it has no multiplicative inverse.</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 2</p>
+<p>List the elements of \(S_3\) and find a subgroup of order 2 and a subgroup of order 3.</p>
+<form class="grade" data-grade="abstract-algebra-a2">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="abstract-algebra-a2">Check work and answer</button></p>
+<p class="verdict" data-verdict="abstract-algebra-a2"></p>
+</form>
+<p><button type="button" data-start="abstract-algebra-a2">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="abstract-algebra-a2">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="abstract-algebra-a2" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-abstract-algebra-a2" hidden><p>\(S_3\) has six permutations of \(\{1,2,3\}\). A subgroup of order 2 is \(\{e,(12)\}\). A subgroup of order 3 is the alternating group \(A_3=\{e,(123),(132)\}\), which is cyclic.</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 3</p>
+<p>Prove that the identity element of a group is unique.</p>
+<form class="grade" data-grade="abstract-algebra-a3">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="abstract-algebra-a3">Check work and answer</button></p>
+<p class="verdict" data-verdict="abstract-algebra-a3"></p>
+</form>
+<p><button type="button" data-start="abstract-algebra-a3">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="abstract-algebra-a3">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="abstract-algebra-a3" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-abstract-algebra-a3" hidden><p>If \(e\) and \(f\) are both identities, then \(e=ef=f\).</p></div>
+</article>
+</section>
+<section id="prereqs">
+<h2>Prerequisites</h2>
+<ul class="clean"><li><a href="proof-logic.html">Proof and Logic</a></li><li><a href="linear-algebra.html">Linear Algebra</a></li></ul>
+</section>
+<section id="what">
+<h2>What this actually is</h2>
+
+<p>Abstract algebra studies sets with operations that obey a short list of axioms, and the maps that preserve those operations. Groups capture symmetry. Rings capture arithmetic. Fields capture the setting in which linear algebra was happening all along. The payoff in a first serious course is the isomorphism theorems, the classification of finitely generated abelian groups, the Sylow theorems, and, if you go the distance, the Galois correspondence between field extensions and groups of automorphisms.</p>
+<p>You already know linear maps are homomorphisms of additive groups that also respect scalar multiplication. This page removes the scalars and asks what is left. The work is examples: symmetric groups, cyclic groups, matrix groups, polynomial rings, and finite fields. A definition you cannot illustrate with two nonisomorphic examples is a definition you will misquote.</p>
+<p>Judson’s Abstract Algebra: Theory and Applications is free, updated, and has enough exercises to be the whole course. Dummit and Foote is the paid encyclopedia; no edition was verified, so it is not given an ISBN here. Use it as a reference after Judson, not as a place to hide from exercises.</p>
+
+</section>
+<section id="core">
+<h2>Core results</h2>
+<p>Statements only. Write the argument before you reveal it. A revealed proof you did not attempt is a paragraph you will not be able to rebuild at 2am.</p>
+<ol class="spine">
+
+<li>
+<p><strong>Groups.</strong> A group is a set with an associative binary operation, an identity, and inverses. A subgroup is a subset that is a group under the same operation. The order of an element is the size of the cyclic subgroup it generates. Lagrange: the order of a subgroup divides the order of a finite group.</p>
+<p><button type="button" data-show-proof="proof-abstract-algebra-1">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-abstract-algebra-1" hidden><p>Lagrange is a counting argument: the left cosets of a subgroup partition the group and all have the same size, namely the order of the subgroup.</p></div>
+</li>
+<li>
+<p><strong>Homomorphisms.</strong> A homomorphism preserves the operation. Its kernel is a normal subgroup, and its image is a subgroup. The first isomorphism theorem: \(G/\ker\varphi\cong\operatorname{im}\varphi\).</p>
+<p><button type="button" data-show-proof="proof-abstract-algebra-2">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-abstract-algebra-2" hidden><p>The kernel is the preimage of the identity. Cosets of the kernel are the fibers of the homomorphism. The induced map on cosets is a bijection onto the image and preserves the operation.</p></div>
+</li>
+<li>
+<p><strong>Quotients and Sylow.</strong> If \(N\) is normal in \(G\), the set of cosets \(G/N\) is a group. A finite group of order \(p^k m\) with \(p\) not dividing \(m\) has a subgroup of order \(p^k\), and the number of them is congruent to 1 mod \(p\) and divides \(m\).</p>
+<p><button type="button" data-show-proof="proof-abstract-algebra-3">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-abstract-algebra-3" hidden><p>The quotient operation is well-defined exactly because \(N\) is normal: \(aN\cdot bN=abN\) does not depend on representatives. The Sylow theorems are proved by letting the group act on the set of subsets of size \(p^k\), or on its Sylow subgroups by conjugation. Write the congruence \(n_p\equiv 1\pmod p\) from the class equation after you have seen one proof; do not memorize it as a spell.</p></div>
+</li>
+<li>
+<p><strong>Rings and fields.</strong> A commutative ring with identity has an ideal theory. Quotients by ideals are rings. A field is a commutative ring in which every nonzero element is invertible. \(F[x]\) over a field is a Euclidean domain, hence a principal ideal domain, hence a unique factorization domain.</p>
+<p><button type="button" data-show-proof="proof-abstract-algebra-4">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-abstract-algebra-4" hidden><p>The division algorithm in \(F[x]\) is polynomial long division. Principal ideals follow by taking a polynomial of least degree in a nonzero ideal. Unique factorization follows from the usual Euclidean-domain argument.</p></div>
+</li>
+<li>
+<p><strong>Galois, stated.</strong> A finite Galois extension \(K/F\) has automorphism group \(G\) with \(|G|=[K:F]\), and intermediate fields correspond bijectively to subgroups of \(G\), order-reversing. The splitting field of a separable polynomial is Galois.</p>
+<p><button type="button" data-show-proof="proof-abstract-algebra-5">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-abstract-algebra-5" hidden><p>This is the fundamental theorem of Galois theory. A first course often reaches it at the end. You should be able to compute the Galois group of \(x^2-2\) over \(\mathbb{Q}\) and of a cyclotomic extension of small degree before you claim the correspondence. The proof uses the theorem of the primitive element and linear independence of characters.</p></div>
+</li>
+</ol>
+</section>
+<section id="ladder">
+<h2>The ladder</h2>
+<p>Four rungs, in order. Do not skip a rung because the next one looks more serious.</p>
+<h3>Tier 0 / First contact</h3><p class="tier-label">Watch or read once. Do not study from this.</p><p class="resource"><a href="https://judsonbooks.org/abstract-algebra-theory-and-applications/">Judson, the book’s front page</a><br><span class="why">Read once, do not study from this. See that the book runs from groups through Galois theory and that a free PDF exists. Then download the PDF and work there.</span></p><h3>Tier 1 / Main text</h3><p class="tier-label">The thing you work through.</p><p class="resource"><a href="https://judsonbooks.org/aata-files/aata-20260811.pdf">Judson, Abstract Algebra: Theory and Applications, 2025/2026 edition PDF</a><br><span class="why">Free. The HTML edition is https://judsonbooks.org/aata-files/aata-html/aata.html . Paperback ISBN 978-1-944325-21-3 is the 2026 print edition named on the author’s page. This is the main text because it is complete, exercised, and legal.</span></p><h3>Tier 2 / Hard problems</h3><p class="tier-label">The problem book.</p><p class="resource"><a href="https://judsonbooks.org/aata-files/aata-html/aata.html">Judson’s harder exercises, all of them, plus the Sage checks he includes</a><br><span class="why">The exercises are the problem set. Dummit and Foote is the paid source of extra problems; no edition was verified.</span></p><h3>Tier 3 / The ceiling</h3><p class="tier-label">The hardest questions that exist at this level.</p><p class="resource"><a href="https://kskedlaya.org/putnam-archive/">Putnam problems on groups, rings, and polynomials</a><br><span class="why">Borisov’s sorted list points at the algebra problems: https://people.math.binghamton.edu/borisov/Putnam/SelectedProblemList.pdf . Qualifying exams in algebra are the real ceiling; a public one you can start now is a Putnam algebra problem you cannot start in five minutes.</span></p>
+
+<ul class="checks">
+<li><label><input type="checkbox" data-slug="abstract-algebra" data-stage="contact"> Tier 0 done once, then closed.</label></li>
+<li><label><input type="checkbox" data-slug="abstract-algebra" data-stage="text"> Main text worked, exercises written.</label></li>
+<li><label><input type="checkbox" data-slug="abstract-algebra" data-stage="hard"> Hard-problem set written up.</label></li>
+<li><label><input type="checkbox" data-slug="abstract-algebra" data-stage="ceiling"> Ceiling problems attempted under the timer.</label></li>
+<li><label><input type="checkbox" data-slug="abstract-algebra" data-stage="gate"> Mastery gate passed.</label></li>
+</ul>
+
+</section>
+<section id="hardest">
+<h2>Hardest questions</h2>
+<p>Names and links. The problem text stays on the source site. Copyrighted contest problems are not copied here. What follows is where they are and why they hurt.</p>
+<ol class="spine">
+<li><a href="https://judsonbooks.org/aata-files/aata-20260811.pdf">Judson, the Sylow exercises</a><br><span class="why">Counting subgroups is where Lagrange stops being enough.</span></li><li><a href="https://judsonbooks.org/aata-files/aata-html/aata.html">Judson, Galois correspondence computations</a><br><span class="why">A small extension you compute by hand teaches more than a paragraph about solvability.</span></li><li><a href="https://people.math.binghamton.edu/borisov/Putnam/SelectedProblemList.pdf">Borisov, algebra section</a><br><span class="why">Putnam algebra problems are short and do not announce which theorem they want.</span></li><li><a href="https://kskedlaya.org/putnam-archive/2008.pdf">Putnam 2008</a><br><span class="why">Use it as a timed paper after the Sylow chapter.</span></li><li><a href="https://judsonbooks.org/aata-files/aata-20260811.pdf">Classify groups of order pq for distinct primes, with hypotheses written</a><br><span class="why">The proof is a Sylow counting argument. If you only remember the conclusion, you do not have it.</span></li>
+</ol>
+</section>
+<section id="gate">
+<h2>Mastery gate</h2>
+<p>Pass: written proofs of Lagrange, the first isomorphism theorem, and one Sylow counting argument for a specific order, plus a complete computation of the Galois group of \(x^3-2\) over \(\mathbb{Q}\) or a written admission of exactly which lemma you are missing. Fail if “normal” means “invariant” without a sentence about conjugates or kernels.</p>
+<p><label><input type="checkbox" data-slug="abstract-algebra" data-stage="gate"> I passed this gate with written solutions.</label></p>
+</section>
+<section id="diagrams">
+<h2>Diagrams</h2>
+<figure class="diagram">
+<svg viewBox="0 0 640 360" role="img" aria-label="A group mapping onto a quotient"><rect width="640" height="360" fill="#000"/><line x1="0" y1="0" x2="0" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="40" y1="0" x2="40" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="80" y1="0" x2="80" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="120" y1="0" x2="120" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="160" y1="0" x2="160" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="200" y1="0" x2="200" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="240" y1="0" x2="240" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="280" y1="0" x2="280" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="320" y1="0" x2="320" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="360" y1="0" x2="360" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="400" y1="0" x2="400" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="440" y1="0" x2="440" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="480" y1="0" x2="480" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="520" y1="0" x2="520" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="560" y1="0" x2="560" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="600" y1="0" x2="600" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="640" y1="0" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="0" x2="640" y2="0" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="40" x2="640" y2="40" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="80" x2="640" y2="80" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="120" x2="640" y2="120" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="160" x2="640" y2="160" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="200" x2="640" y2="200" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="240" x2="640" y2="240" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="280" x2="640" y2="280" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="320" x2="640" y2="320" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="360" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><rect x="70" y="140" width="140" height="70" fill="none" stroke="#fff"/><rect x="400" y="140" width="140" height="70" fill="none" stroke="#fff"/><line x1="210" y1="175" x2="400" y2="175" stroke="#fff" marker-end=""/><polygon points="390,168 400,175 390,182" fill="#fff"/><text x="90" y="180" fill="#fff" font-size="16" font-family="Georgia, serif">G</text><text x="430" y="180" fill="#fff" font-size="16" font-family="Georgia, serif">G/N</text><text x="270" y="160" fill="#bbb" font-size="14" font-family="Georgia, serif">quotient</text></svg>
+<figcaption>The first isomorphism theorem says every homomorphism is a quotient onto its image.</figcaption>
+</figure>
+</section>
+<section id="sets">
+<h2>Escalating sets</h2>
+<p>Five sets. Finish a set before you touch the next. Full sentences, not a circled answer.</p>
+<h3>Set 1. Groups</h3><ol><li>Prove the identity is unique and inverses are unique.</li><li>Prove that \(S_3\) is nonabelian.</li><li>List subgroups of \(\mathbb{Z}/6\mathbb{Z}\).</li><li>Prove Lagrange for a subgroup of a finite group.</li><li>Show \(A_3\) is cyclic.</li></ol><h3>Set 2. Homomorphisms</h3><ol><li>Kernel of the sign homomorphism \(S_n\to\{\pm 1\}\).</li><li>Prove the first isomorphism theorem.</li><li>Show that a cyclic group of order \(n\) is isomorphic to \(\mathbb{Z}/n\mathbb{Z}\).</li><li>Prove the center of a group is a normal subgroup.</li><li>Give two groups of order 4 that are not isomorphic.</li></ol><h3>Set 3. Sylow and quotients</h3><ol><li>How many elements of order 2 are in \(S_3\)?</li><li>Prove there is a normal subgroup of order 7 in a group of order 14, or decide it carefully with Sylow.</li><li>State all three Sylow theorems.</li><li>Show \(\mathbb{Z}\) is not isomorphic to \(\mathbb{Q}\) as groups under addition.</li><li>Compute the conjugacy classes of \(S_3\).</li></ol><h3>Set 4. Rings</h3><ol><li>Prove \(F[x]\) is a Euclidean domain when \(F\) is a field.</li><li>Factor \(x^2+1\) over \(\mathbb{R}\) and over \(\mathbb{C}\).</li><li>Show \(\mathbb{Z}/n\mathbb{Z}\) is a field iff \(n\) is prime.</li><li>Ideals of \(\mathbb{Z}\).</li><li>A ring homomorphism from a field is injective or zero. Prove it.</li></ol><h3>Set 5. Ceiling</h3><ol><li>Galois group of \(x^2-2\) over \(\mathbb{Q}\).</li><li>As far as you can get on \(x^3-2\).</li><li>Five Borisov algebra problems.</li><li>One Putnam paper’s algebra problems, timed for the ones you attempt.</li><li>Oral proof of the first isomorphism theorem.</li></ol>
+</section>
+<section id="bank">
+<h2>Return bank</h2>
+<p>Ten problems to meet again. Logging a writeup schedules them at 1 day, 7 days, and 30 days in this browser.</p>
+<ul id="due-list" class="clean"></ul>
+<ol>
+<li class="bank-item" data-bank-id="abstract-algebra-b1" data-bank-label="Identity in a group is unique.">Identity in a group is unique. <button type="button" data-log-review="abstract-algebra-b1">Log a writeup</button></li><li class="bank-item" data-bank-id="abstract-algebra-b2" data-bank-label="Subgroups of \(S_3\).">Subgroups of \(S_3\). <button type="button" data-log-review="abstract-algebra-b2">Log a writeup</button></li><li class="bank-item" data-bank-id="abstract-algebra-b3" data-bank-label="Lagrange.">Lagrange. <button type="button" data-log-review="abstract-algebra-b3">Log a writeup</button></li><li class="bank-item" data-bank-id="abstract-algebra-b4" data-bank-label="First isomorphism theorem.">First isomorphism theorem. <button type="button" data-log-review="abstract-algebra-b4">Log a writeup</button></li><li class="bank-item" data-bank-id="abstract-algebra-b5" data-bank-label="Two groups of order 4.">Two groups of order 4. <button type="button" data-log-review="abstract-algebra-b5">Log a writeup</button></li><li class="bank-item" data-bank-id="abstract-algebra-b6" data-bank-label="\(\mathbb{Z}/n\mathbb{Z}\) is a field iff \(n\) is prime.">\(\mathbb{Z}/n\mathbb{Z}\) is a field iff \(n\) is prime. <button type="button" data-log-review="abstract-algebra-b6">Log a writeup</button></li><li class="bank-item" data-bank-id="abstract-algebra-b7" data-bank-label="\(F[x]\) is a Euclidean domain.">\(F[x]\) is a Euclidean domain. <button type="button" data-log-review="abstract-algebra-b7">Log a writeup</button></li><li class="bank-item" data-bank-id="abstract-algebra-b8" data-bank-label="Sylow statement for \(n_p\).">Sylow statement for \(n_p\). <button type="button" data-log-review="abstract-algebra-b8">Log a writeup</button></li><li class="bank-item" data-bank-id="abstract-algebra-b9" data-bank-label="Galois group of \(x^2-2\).">Galois group of \(x^2-2\). <button type="button" data-log-review="abstract-algebra-b9">Log a writeup</button></li><li class="bank-item" data-bank-id="abstract-algebra-b10" data-bank-label="Center is normal.">Center is normal. <button type="button" data-log-review="abstract-algebra-b10">Log a writeup</button></li>
+</ol>
+</section>
+<section id="oral">
+<h2>Oral pass</h2>
+<p>Define a group, prove Lagrange, and state the first isomorphism theorem with the kernel in the sentence. No notes.</p>
+<p><label><input type="checkbox" data-slug="abstract-algebra" data-stage="oral"> I explained this from a blank page, out loud, with no notes.</label></p>
+</section>
+<div class="pager"><a href="../topics/topology.html">← Topology</a><a href="../topics/complex-analysis.html">Complex Analysis →</a></div>
+
+<footer class="colophon">Black page, white type. Progress stays in this browser. No account, no analytics.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Analysis</title>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script defer src="../js/curriculum.js"></script>
+<script defer src="../js/grades.js"></script>
+<script defer src="../js/site.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\[", right: "\\]", display: true},
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: false
+    });
+  }
+});
+</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav"><a class="brand" href="../index.html">Disgusting at Math</a><a href="../index.html">Map</a><a href="../method.html">Method</a><a href="../resources.html">Resources</a><a href="../progress.html">Progress</a></nav>
+
+<p class="kicker">Math · 11</p>
+<h1>Complex Analysis</h1>
+<div class="pager"><a href="../topics/abstract-algebra.html">← Abstract Algebra</a><a href="../topics/measure-theory.html">Measure Theory →</a></div>
+
+<nav class="toc" aria-label="On this page">
+<p class="kicker">On this page</p>
+<ol>
+<li><a href="#attack">Problems first</a></li>
+<li><a href="#prereqs">Prerequisites</a></li>
+<li><a href="#what">What this actually is</a></li>
+<li><a href="#core">Core results</a></li>
+<li><a href="#ladder">The ladder</a></li>
+<li><a href="#hardest">Hardest questions</a></li>
+<li><a href="#gate">Mastery gate</a></li>
+<li><a href="#diagrams">Diagrams</a></li>
+<li><a href="#sets">Escalating sets</a></li>
+<li><a href="#bank">Return bank</a></li>
+<li><a href="#oral">Oral pass</a></li>
+</ol>
+</nav>
+
+<section id="attack">
+<h2>Problems first</h2>
+<p>Attempt these before you open a book or a video. Write the argument in the work box and the conclusion in the answer box. Check counts the problem only when both pass, and it does not open the solution. The solution stays locked for twenty minutes after you start the timer.</p>
+
+<article class="attack">
+<p class="kicker">Attack 1</p>
+<p>Write the Cauchy–Riemann equations for \(f=u+iv\), and check them for \(f(z)=z^2\).</p>
+<form class="grade" data-grade="complex-analysis-a1">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="complex-analysis-a1">Check work and answer</button></p>
+<p class="verdict" data-verdict="complex-analysis-a1"></p>
+</form>
+<p><button type="button" data-start="complex-analysis-a1">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="complex-analysis-a1">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="complex-analysis-a1" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-complex-analysis-a1" hidden><p>\(u_x=v_y\) and \(u_y=-v_x\). For \(z^2=(x+iy)^2=x^2-y^2+2ixy\), one has \(u_x=2x=v_y\) and \(u_y=-2y=-v_x\).</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 2</p>
+<p>Compute \(\int_{|z|=1} dz/z\), counterclockwise.</p>
+<form class="grade" data-grade="complex-analysis-a2">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="complex-analysis-a2">Check work and answer</button></p>
+<p class="verdict" data-verdict="complex-analysis-a2"></p>
+</form>
+<p><button type="button" data-start="complex-analysis-a2">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="complex-analysis-a2">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="complex-analysis-a2" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-complex-analysis-a2" hidden><p>Parametrize \(z=e^{i\theta}\), \(dz=ie^{i\theta}d\theta\), \(\theta\) from 0 to \(2\pi\). The integral is \(\int_0^{2\pi} i\,d\theta=2\pi i\).</p></div>
+</article>
+<article class="attack">
+<p class="kicker">Attack 3</p>
+<p>Why does Cauchy–Riemann for \(f(z)=\bar z\) fail?</p>
+<form class="grade" data-grade="complex-analysis-a3">
+<label class="field">Your work
+<textarea data-work rows="6" spellcheck="false"></textarea>
+</label>
+<label class="field">Your answer
+<input data-answer type="text" autocomplete="off" spellcheck="false">
+</label>
+<p><button type="button" data-check="complex-analysis-a3">Check work and answer</button></p>
+<p class="verdict" data-verdict="complex-analysis-a3"></p>
+</form>
+<p><button type="button" data-start="complex-analysis-a3">Start 20-minute attempt</button></p>
+<p class="timer" data-clock="complex-analysis-a3">Timer not started. Twenty minutes of real work before a solution.</p>
+<p><button type="button" data-solution="complex-analysis-a3" disabled>Reveal solution</button></p>
+<div class="hidden-block" id="sol-complex-analysis-a3" hidden><p>\(u=x\), \(v=-y\). Then \(u_x=1\) and \(v_y=-1\), so \(u_x\ne v_y\). Conjugation is not holomorphic anywhere.</p></div>
+</article>
+</section>
+<section id="prereqs">
+<h2>Prerequisites</h2>
+<ul class="clean"><li><a href="calc-3.html">Multivariable and Vector Calculus</a></li><li><a href="real-analysis.html">Real Analysis</a></li></ul>
+</section>
+<section id="what">
+<h2>What this actually is</h2>
+
+<p>Complex analysis is calculus for functions \(\mathbb{C}\to\mathbb{C}\) that are complex-differentiable on an open set. That single hypothesis is absurdly strong. It implies the function is analytic, that its integral over a triangle vanishes, that Cauchy's integral formula recovers the function from its values on a circle, and that a bounded entire function is constant. Residues then turn real integrals into contour bookkeeping. You are not learning a new computational trick. You are learning why holomorphicity is a rigidity condition.</p>
+<p>MIT 18.04 is a full course with notes and problem sets, and it is the working text because a standard book such as Ahlfors or Conway is paid and no free legal scan was verified. Stein and Shakarchi, and Needham’s Visual Complex Analysis, are paid and unnamed by ISBN here for the same reason. Use 18.04’s problem sets as the book. The proofs you must own are Cauchy's theorem for a disk, the integral formula, and the residue theorem at the level of a simple pole.</p>
+<p>A formal power series you cannot connect to an integral is not yet complex analysis.</p>
+
+</section>
+<section id="core">
+<h2>Core results</h2>
+<p>Statements only. Write the argument before you reveal it. A revealed proof you did not attempt is a paragraph you will not be able to rebuild at 2am.</p>
+<ol class="spine">
+
+<li>
+<p><strong>Holomorphic.</strong> \(f\) is holomorphic at \(z_0\) when \(\lim_{h\to 0}(f(z_0+h)-f(z_0))/h\) exists in \(\mathbb{C}\). On an open set this is equivalent, given continuous partials, to the Cauchy–Riemann equations.</p>
+<p><button type="button" data-show-proof="proof-complex-analysis-1">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-complex-analysis-1" hidden><p>Approach along real and imaginary directions to get Cauchy–Riemann. The converse, with continuous partials, writes the real differential and matches it to multiplication by a complex number.</p></div>
+</li>
+<li>
+<p><strong>Cauchy.</strong> If \(f\) is holomorphic inside and on a triangle, the integral over the boundary is 0. Cauchy's integral formula: \(f(a)=\frac{1}{2\pi i}\int_\gamma f(z)/(z-a)\,dz\) for \(a\) inside a suitable closed curve.</p>
+<p><button type="button" data-show-proof="proof-complex-analysis-2">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-complex-analysis-2" hidden><p>Goursat’s proof for a triangle subdivides and uses a uniform estimate on the difference quotient. The integral formula reduces to the integral of \(1/(z-a)\) by writing \(f(z)=f(a)+(f(z)-f(a))\) and showing the second term integrates to 0.</p></div>
+</li>
+<li>
+<p><strong>Consequences.</strong> Holomorphic functions are analytic. Liouville: a bounded entire function is constant. The identity theorem: if two holomorphic functions on a connected open set agree on a set with a limit point, they agree everywhere.</p>
+<p><button type="button" data-show-proof="proof-complex-analysis-3">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-complex-analysis-3" hidden><p>Expand via Cauchy's formula as a power series. Liouville: Cauchy's estimates force every Taylor coefficient past the constant term to vanish when the function is bounded. The identity theorem uses isolation of zeros of a non identically zero holomorphic function.</p></div>
+</li>
+<li>
+<p><strong>Residues.</strong> The residue at an isolated singularity is the coefficient of \(1/(z-a)\) in the Laurent series, and the integral over a small circle is \(2\pi i\) times that coefficient. A simple pole of \(p/q\) at a simple zero of \(q\) has residue \(p(a)/q'(a)\).</p>
+<p><button type="button" data-show-proof="proof-complex-analysis-4">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-complex-analysis-4" hidden><p>Laurent coefficients are Cauchy integrals. Only the \(1/(z-a)\) term survives integration over a circle. The simple-pole formula is the limit \((z-a)p(z)/q(z)\) as \(z\to a\), which is \(p(a)/q'(a)\) by differentiability of \(q\).</p></div>
+</li>
+<li>
+<p><strong>Real integrals.</strong> A standard real integral of a rational function of sine and cosine, or a rational function with enough decay, can be read off from residues of a related complex function, provided you justify the vanishing of the integral on the closing arc.</p>
+<p><button type="button" data-show-proof="proof-complex-analysis-5">I wrote a proof. Reveal.</button></p>
+<div class="hidden-block" id="proof-complex-analysis-5" hidden><p>The justification is an estimate: length of the arc times the maximum of the modulus. Write one such estimate, for a semicircle and a function with degree of the denominator at least two more than the numerator, before you use a table.</p></div>
+</li>
+</ol>
+</section>
+<section id="ladder">
+<h2>The ladder</h2>
+<p>Four rungs, in order. Do not skip a rung because the next one looks more serious.</p>
+<h3>Tier 0 / First contact</h3><p class="tier-label">Watch or read once. Do not study from this.</p><p class="resource"><a href="https://ocw.mit.edu/courses/18-04-complex-variables-with-applications-spring-2018/">MIT 18.04 course page, the overview only</a><br><span class="why">Read once, do not study from this. Read the overview so you see the destination is contour integrals and residues. The same site is the course; the preview is one pass over the description, then you start the problem sets as Tier 1.</span></p><h3>Tier 1 / Main text</h3><p class="tier-label">The thing you work through.</p><p class="resource"><a href="https://ocw.mit.edu/courses/18-04-complex-variables-with-applications-spring-2018/">MIT 18.04 notes and problem sets</a><br><span class="why">This is the main text. Ahlfors and Conway are the paid classics; editions were not verified, so they are not cited with fake ISBNs.</span></p><h3>Tier 2 / Hard problems</h3><p class="tier-label">The problem book.</p><p class="resource"><a href="https://ocw.mit.edu/courses/18-04-complex-variables-with-applications-spring-2018/">18.04 exams and the harder problem sets</a><br><span class="why">Do every set. The hardness is justifying arcs and branch cuts, not the residue arithmetic.</span></p><h3>Tier 3 / The ceiling</h3><p class="tier-label">The hardest questions that exist at this level.</p><p class="resource"><a href="https://kskedlaya.org/putnam-archive/">Putnam problems that are complex analysis in disguise, via Kedlaya</a><br><span class="why">Qualifying exams in complex analysis are the real ceiling. Until you have a public quals PDF you have personally verified, the Putnam archive plus a complete 18.04 exam is the honest public ceiling.</span></p>
+
+<ul class="checks">
+<li><label><input type="checkbox" data-slug="complex-analysis" data-stage="contact"> Tier 0 done once, then closed.</label></li>
+<li><label><input type="checkbox" data-slug="complex-analysis" data-stage="text"> Main text worked, exercises written.</label></li>
+<li><label><input type="checkbox" data-slug="complex-analysis" data-stage="hard"> Hard-problem set written up.</label></li>
+<li><label><input type="checkbox" data-slug="complex-analysis" data-stage="ceiling"> Ceiling problems attempted under the timer.</label></li>
+<li><label><input type="checkbox" data-slug="complex-analysis" data-stage="gate"> Mastery gate passed.</label></li>
+</ul>
+
+</section>
+<section id="hardest">
+<h2>Hardest questions</h2>
+<p>Names and links. The problem text stays on the source site. Copyrighted contest problems are not copied here. What follows is where they are and why they hurt.</p>
+<ol class="spine">
+<li><a href="https://ocw.mit.edu/courses/18-04-complex-variables-with-applications-spring-2018/">18.04 problem sets on Cauchy&#x27;s theorem</a><br><span class="why">You have to say where the function is holomorphic, not just compute.</span></li><li><a href="https://ocw.mit.edu/courses/18-04-complex-variables-with-applications-spring-2018/">18.04 exams</a><br><span class="why">Branch cuts and estimates show up without a section header.</span></li><li><a href="https://ocw.mit.edu/courses/18-04-complex-variables-with-applications-spring-2018/">Compute a real improper integral by residues, with the arc estimate written</a><br><span class="why">The estimate is the part everyone skips and the part the grader wants.</span></li><li><a href="https://kskedlaya.org/putnam-archive/2008.pdf">Prove Liouville from Cauchy&#x27;s estimates</a><br><span class="why">A short proof you should own. The Putnam link is a timed paper to attempt the same week, not the proof itself.</span></li><li><a href="https://ocw.mit.edu/courses/18-04-complex-variables-with-applications-spring-2018/">Identity theorem, with the zeros-are-isolated lemma</a><br><span class="why">This is the rigidity. Without the lemma the theorem is a slogan.</span></li>
+</ol>
+</section>
+<section id="gate">
+<h2>Mastery gate</h2>
+<p>Pass: a timed 18.04 exam, plus written proofs of Cauchy's integral formula for a circle and of Liouville’s theorem. Fail if a residue computation has no sentence about the contour.</p>
+<p><label><input type="checkbox" data-slug="complex-analysis" data-stage="gate"> I passed this gate with written solutions.</label></p>
+</section>
+<section id="diagrams">
+<h2>Diagrams</h2>
+<figure class="diagram">
+<svg viewBox="0 0 640 360" role="img" aria-label="A circle contour around a point"><rect width="640" height="360" fill="#000"/><line x1="0" y1="0" x2="0" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="40" y1="0" x2="40" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="80" y1="0" x2="80" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="120" y1="0" x2="120" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="160" y1="0" x2="160" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="200" y1="0" x2="200" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="240" y1="0" x2="240" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="280" y1="0" x2="280" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="320" y1="0" x2="320" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="360" y1="0" x2="360" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="400" y1="0" x2="400" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="440" y1="0" x2="440" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="480" y1="0" x2="480" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="520" y1="0" x2="520" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="560" y1="0" x2="560" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="600" y1="0" x2="600" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="640" y1="0" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="0" x2="640" y2="0" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="40" x2="640" y2="40" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="80" x2="640" y2="80" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="120" x2="640" y2="120" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="160" x2="640" y2="160" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="200" x2="640" y2="200" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="240" x2="640" y2="240" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="280" x2="640" y2="280" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="320" x2="640" y2="320" stroke="rgba(255,255,255,0.16)"/><line x1="0" y1="360" x2="640" y2="360" stroke="rgba(255,255,255,0.16)"/><circle cx="320" cy="180" r="100" fill="none" stroke="#fff" stroke-width="1.5"/><circle cx="320" cy="180" r="4" fill="#fff"/><path d="M420 180 A100 100 0 0 0 320 80" fill="none" stroke="#fff"/><polygon points="330,78 320,70 318,88" fill="#fff"/><text x="330" y="176" fill="#bbb" font-size="14" font-family="Georgia, serif">a</text></svg>
+<figcaption>Cauchy's formula rebuilds f(a) from the values on the circle.</figcaption>
+</figure>
+</section>
+<section id="sets">
+<h2>Escalating sets</h2>
+<p>Five sets. Finish a set before you touch the next. Full sentences, not a circled answer.</p>
+<h3>Set 1. Differentiability</h3><ol><li>Cauchy–Riemann for \(z^2\) and for \(\bar z\).</li><li>Prove that a holomorphic function with zero derivative is locally constant, on a disk.</li><li>Show \(e^z\) is entire.</li><li>Find where \(|z|^2\) is complex differentiable.</li><li>Express \(f'(z)\) in terms of \(u_x\) and \(v_x\).</li></ol><h3>Set 2. Integrals</h3><ol><li>\(\int_{|z|=1} dz/z\).</li><li>\(\int_{|z|=2} dz/(z-1)\).</li><li>State Goursat’s theorem.</li><li>Prove the integral of an exact derivative \(F'\) over a closed curve is zero when \(F\) is entire.</li><li>Estimate \(|\int_\gamma f|\le \mathrm{length}(\gamma)\cdot\max|f|\).</li></ol><h3>Set 3. Consequences</h3><ol><li>Derive the Taylor series of \(1/(1-z)\) on the unit disk.</li><li>Prove Liouville.</li><li>Prove the fundamental theorem of algebra from Liouville.</li><li>State the identity theorem.</li><li>Give two different holomorphic functions that agree on \(\{1/n\}\). Explain why this does not contradict the identity theorem.</li></ol><h3>Set 4. Residues</h3><ol><li>Residue of \(1/(z^2+1)\) at \(i\).</li><li>Simple-pole formula, proved.</li><li>A semicircle estimate for \(1/(z^2+1)\).</li><li>Compute \(\int_{-\infty}^{\infty} dx/(x^2+1)\) by residues.</li><li>A function with an essential singularity: \(e^{1/z}\). Name one Laurent coefficient.</li></ol><h3>Set 5. Ceiling</h3><ol><li>One 18.04 exam.</li><li>Liouville from memory.</li><li>One branch-cut problem from the course.</li><li>Fundamental theorem of algebra via Liouville.</li><li>Oral statement of Cauchy's formula.</li></ol>
+</section>
+<section id="bank">
+<h2>Return bank</h2>
+<p>Ten problems to meet again. Logging a writeup schedules them at 1 day, 7 days, and 30 days in this browser.</p>
+<ul id="due-list" class="clean"></ul>
+<ol>
+<li class="bank-item" data-bank-id="complex-analysis-b1" data-bank-label="Cauchy–Riemann for \(z^2\).">Cauchy–Riemann for \(z^2\). <button type="button" data-log-review="complex-analysis-b1">Log a writeup</button></li><li class="bank-item" data-bank-id="complex-analysis-b2" data-bank-label="\(\int dz/z\) on the unit circle.">\(\int dz/z\) on the unit circle. <button type="button" data-log-review="complex-analysis-b2">Log a writeup</button></li><li class="bank-item" data-bank-id="complex-analysis-b3" data-bank-label="\(\bar z\) is nowhere holomorphic.">\(\bar z\) is nowhere holomorphic. <button type="button" data-log-review="complex-analysis-b3">Log a writeup</button></li><li class="bank-item" data-bank-id="complex-analysis-b4" data-bank-label="Liouville.">Liouville. <button type="button" data-log-review="complex-analysis-b4">Log a writeup</button></li><li class="bank-item" data-bank-id="complex-analysis-b5" data-bank-label="Fundamental theorem of algebra via Liouville.">Fundamental theorem of algebra via Liouville. <button type="button" data-log-review="complex-analysis-b5">Log a writeup</button></li><li class="bank-item" data-bank-id="complex-analysis-b6" data-bank-label="Residue of \(1/(z^2+1)\) at \(i\).">Residue of \(1/(z^2+1)\) at \(i\). <button type="button" data-log-review="complex-analysis-b6">Log a writeup</button></li><li class="bank-item" data-bank-id="complex-analysis-b7" data-bank-label="Real integral of \(1/(x^2+1)\).">Real integral of \(1/(x^2+1)\). <button type="button" data-log-review="complex-analysis-b7">Log a writeup</button></li><li class="bank-item" data-bank-id="complex-analysis-b8" data-bank-label="Identity theorem’s hypothesis.">Identity theorem’s hypothesis. <button type="button" data-log-review="complex-analysis-b8">Log a writeup</button></li><li class="bank-item" data-bank-id="complex-analysis-b9" data-bank-label="Arc estimate.">Arc estimate. <button type="button" data-log-review="complex-analysis-b9">Log a writeup</button></li><li class="bank-item" data-bank-id="complex-analysis-b10" data-bank-label="One missed 18.04 problem.">One missed 18.04 problem. <button type="button" data-log-review="complex-analysis-b10">Log a writeup</button></li>
+</ol>
+</section>
+<section id="oral">
+<h2>Oral pass</h2>
+<p>State Cauchy–Riemann, compute the unit-circle integral of \(1/z\), and state Liouville. No notes.</p>
+<p><label><input type="checkbox" data-slug="complex-analysis" data-stage="oral"> I explained this from a blank page, out loud, with no notes.</label></p>
+</section>
+<div class="pager"><a href="../topics/abstract-algebra.html">← Abstract Algebra</a><a href="../topics/measure-theory.html">Measure Theory →</a></div>
+
+<footer class="colophon">Black page, white type. Progress stays in this browser. No account, no analytics.</footer>
+</div>
+</body>
+</html>
